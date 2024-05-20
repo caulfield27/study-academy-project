@@ -1,9 +1,8 @@
 "use client"
-import QuestSidebar from "./guestSidebar/questSidebar";
-import LogedSidebar from "./userSidebar/userSidebar";
+import QuestSidebar from "./questSidebar/questSidebar";
+import LogedSidebar from "./userSIdebar/userSidebar";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import useAuth from "@/src/store/features/auth/auth";
+import useAuth from "@/store/auth/auth";
 
 
 const Sidebar = () => {

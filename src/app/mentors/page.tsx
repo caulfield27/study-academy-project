@@ -1,6 +1,6 @@
-import styles from './index.module.css'
-import { useBooks } from '@/src/store/features/books/books'
-import { mentors } from '@/src/utils/mentorsInfo'
+import styles from './page.module.css'
+import { useBooks } from '@/store/books/books'
+import { mentors } from '@/utils/mentorsInfo'
 
 
 const Mentors = ()=>{

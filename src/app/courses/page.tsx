@@ -1,17 +1,17 @@
-import styles from './index.module.css'
+import styles from './page.module.css'
 import useSWR from 'swr';
 import { CircularProgress } from '@mui/material';
 import {Button} from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import CourseModal from '@/src/components/enterCourseModal/enterCourse';
+import CourseModal from '@/components/enterCourseModal/enterCourse';
 import Swal from 'sweetalert2'
-import { IFavCourse, coursesType } from '@/src/store/features/courses/coursesType';
-import { getCourses } from '@/src/utils/api';
+import { IFavCourse, coursesType } from '@/store/courses/coursesTypes'; 
+import { getCourses } from '@/utils/api';
 import { useEffect, useState } from 'react';
-import { useBooks } from '@/src/store/features/books/books';
-import useAuth from '@/src/store/features/auth/auth';
-import { useCourseStore } from '@/src/store/features/courses/courses';
-import { getFromStorage, setToStorage } from '@/src/utils/getFromStorage';
+import { useBooks } from '@/store/books/books';
+import useAuth from '@/store/auth/auth';
+import { useCourseStore } from '@/store/courses/courses';
+import { getFromStorage, setToStorage } from '@/utils/useLocaleStorage';
 import { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 
 

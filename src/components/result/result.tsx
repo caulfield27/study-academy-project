@@ -1,13 +1,13 @@
 import styles from './result.module.css'
-import ResultModal from "../resultModal/resultModal";
+import ResultModal from './resultModal/resultModal';
 import { Button, Rating } from "@mui/material";
 import ChecklistIcon from '@mui/icons-material/Checklist';
-import CircularWithValueLabel from "../progressBar/progressBar";
-import { quizTypes } from '@/src/store/features/quizes/quizUtils/quizTypes';
+import CircularWithValueLabel from '../progressBar/progress';
+import { quizTypes } from '@/store/quizes/quizUtils/quizesTypes';
 import { FunctionComponent } from 'react';
-import { useBooks } from '@/src/store/features/books/books';
-import { useQuizes } from '@/src/store/features/quizes/quizes';
-import { quizes } from '@/src/store/features/quizes/quizUtils/questions';
+import { useBooks } from '@/store/books/books';
+import { useQuizes } from '@/store/quizes/quizes';
+import { quizes } from '@/store/quizes/quizUtils/questions';
 
 
 const Result = () => {

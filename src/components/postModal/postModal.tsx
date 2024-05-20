@@ -2,10 +2,10 @@ import { useState } from 'react'
 import styles from './postModal.module.css'
 import { TextField } from '@mui/material'
 import {Button} from '@mui/material'
-import { books } from '@/src/store/features/books/booksInterfaces'
+import { books } from '@/store/books/booksTypes'
 import Swal from 'sweetalert2'
-import { postData } from '@/src/utils/api'
-import { isLInk } from '@/src/utils/checkLinkValidate'
+import { postData } from '@/utils/api'
+import { isLInk } from '@/utils/checkValidation'
 import { useSWRConfig } from 'swr'
 
 export interface IModal{

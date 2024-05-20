@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import { IFavBooks, IStates, books } from "./booksInterfaces";
+import { IFavBooks, IStates, books } from "./booksTypes";
 import { IUserItem } from "../auth/auth";
-import { setToStorage } from "@/src/utils/getFromStorage";
+import { setToStorage } from "@/utils/useLocaleStorage";
 import { devtools } from "zustand/middleware";
 
 

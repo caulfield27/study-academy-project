@@ -1,11 +1,11 @@
 import { Button } from '@mui/material'
-import styles from './index.module.css'
-import CourseModal from '@/src/components/enterCourseModal/enterCourse'
-import { IFavCourse, coursesType } from '@/src/store/features/courses/coursesType'
+import styles from './page.module.css'
+import CourseModal from '@/components/enterCourseModal/enterCourse'
+import { IFavCourse, coursesType } from '@/store/courses/coursesTypes'
 import React from 'react'
-import { useCourseStore } from '@/src/store/features/courses/courses'
+import { useCourseStore } from '@/store/courses/courses'
 import { useEffect } from 'react'
-import { getFromStorage, setToStorage } from '@/src/utils/getFromStorage'
+import { getFromStorage, setToStorage } from '@/utils/useLocaleStorage'
 
 const MyCourses = ()=>{
     const favoriteCourses = useCourseStore((state)=> state.favoriteCourses)
@@ -56,7 +56,7 @@ const MyCourses = ()=>{
                                 <div className={styles.languages_wrap}>
                                     <p>You will learn &darr;</p>
                                     <div className={styles.language_img}>
-                                        {course.favCourse.languages.map((language, id) =>
+                                        {course.favCourse.languages.map((language: string | undefined, id: number) =>
                                             <img src={language} alt="altf4" key={id + 1} />
                                         )}
                                     </div>

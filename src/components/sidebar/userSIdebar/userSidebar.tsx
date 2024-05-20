@@ -1,13 +1,13 @@
-import styles from '../guestSidebar/questSidebar.module.css'
+import styles from '../sidebar.module.css'
 import { logedLinks } from './userRoutes';
 import HomeIcon from '@mui/icons-material/Home';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import QuizIcon from '@mui/icons-material/Quiz';
 import SchoolIcon from '@mui/icons-material/School';
 import PersonIcon from '@mui/icons-material/Person';
-import useAuth, { IUserItem } from '@/src/store/features/auth/auth';
+import useAuth, {IUserItem} from '@/store/auth/auth';
 import LoginIcon from '@mui/icons-material/Login';
-import {  useBooks } from '@/src/store/features/books/books';
+import { useBooks } from '@/store/books/books';
 import { Avatar, IconButton, Menu, MenuItem, Divider, ListItemIcon } from '@mui/material';
 import { Logout } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
 import { Settings } from '@mui/icons-material';
 import Link from 'next/link';
-import { useCourseStore } from '@/src/store/features/courses/courses';
+import { useCourseStore } from '@/store/courses/courses';
 
 
 

@@ -1,4 +1,4 @@
-import { setToStorage } from "@/src/utils/getFromStorage";
+import { setToStorage } from "@/utils/useLocaleStorage";
 import Swal from "sweetalert2";
 import { create } from "zustand";
 

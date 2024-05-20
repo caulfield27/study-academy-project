@@ -1,12 +1,12 @@
 import styles from './booksModal.module.css'
 import { useEffect, useState } from 'react'
-import { useBooks } from '@/src/store/features/books/books'
+import { useBooks } from '@/store/books/books';
 import Rating from '@mui/material/Rating';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Swal from 'sweetalert2'
-import { IFavBooks } from '@/src/store/features/books/booksInterfaces'
-import useAuth from '@/src/store/features/auth/auth'
-import { getFromStorage, setToStorage } from '@/src/utils/getFromStorage';
+import { IFavBooks } from '@/store/books/booksTypes';
+import useAuth from '@/store/auth/auth';
+import { getFromStorage, setToStorage } from '@/utils/useLocaleStorage';
 
 export const BooksModal = () => {
     const currentBook = useBooks((state)=> state.currentBook)
@@ -42,8 +42,8 @@ export const BooksModal = () => {
         const getFavStorage = getFromStorage('favorites')
     
         if (isAuth) {
-            if (favorites.some(favBook => favBook.currentBook.id === book.id)) {
-                const filtered = favorites.filter((book) => book.currentBook.id !== currentBook.id)
+            if (favorites.some((favBook: { currentBook: { id: any; }; }) => favBook.currentBook.id === book.id)) {
+                const filtered = favorites.filter((book: { currentBook: { id: any; }; }) => book.currentBook.id !== currentBook.id)
                 getUserFavorites(filtered)
                 if(booksNotifications !== 0){
                     decrementNot(booksNotifications-=1)
@@ -94,7 +94,7 @@ export const BooksModal = () => {
                             </div>
                             <div className={styles.modal_button}>
                                 <button onClick={() => handleFavorites(currentBook)}>
-                                    <FavoriteIcon className={favorites.some(book => book.currentBook.id === currentBook.id) ? styles.favoriteActive : styles.favorite} />
+                                    <FavoriteIcon className={favorites.some((book: { currentBook: { id: any; }; }) => book.currentBook.id === currentBook.id) ? styles.favoriteActive : styles.favorite} />
                                     <span className={styles.favoriteText}>Add to favorites</span>
                                 </button>
                                 <button></button>

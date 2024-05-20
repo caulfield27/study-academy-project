@@ -3,15 +3,15 @@ import useSWR from "swr";
 import { Pagination } from "@mui/material";
 import Link from "next/link";
 import CircularProgress from "@mui/material/CircularProgress";
-import styles from './index.module.css'
+import styles from './page.module.css'
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { books } from "@/src/store/features/books/booksInterfaces";
-import BooksModal from "@/src/components/booksModal/booksModal";
-import { getApi } from "@/src/utils/api";
-import PostModal, { IModal } from "@/src/components/postModal/postModal";
+import { books } from "@/store/books/booksTypes";
+import BooksModal from "@/components/booksModal/booksModal";
+import { getApi } from "@/utils/api";
+import PostModal from "@/components/postModal/postModal";
 import {TextField} from "@mui/material";
-import {useBooks } from "@/src/store/features/books/books";
+import { useBooks } from "@/store/books/books";
 import { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import { useRouter, useSearchParams } from "next/navigation";
 

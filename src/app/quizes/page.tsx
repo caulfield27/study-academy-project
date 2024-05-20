@@ -1,11 +1,11 @@
-import styles from './index.module.css'
+import styles from './page.module.css'
 import { useRouter } from 'next/navigation';
 import { Rating } from '@mui/material';
-import { useBooks } from '@/src/store/features/books/books';
-import { quizes } from '@/src/store/features/quizes/quizUtils/questions';
-import { IGlobalQuestions } from '@/src/store/features/quizes/quizUtils/quizTypes';
-import { useQuizes } from '@/src/store/features/quizes/quizes';
-import { setToStorage } from '@/src/utils/getFromStorage';
+import { useBooks } from '@/store/books/books';
+import { quizes } from '@/store/quizes/quizUtils/questions';
+import { IGlobalQuestions } from '@/store/quizes/quizUtils/quizesTypes';
+import { useQuizes } from '@/store/quizes/quizes';
+import { setToStorage } from '@/utils/useLocaleStorage';
 
 
 

@@ -2,8 +2,8 @@ import styles from '../enterCourseModal/enterCourse.module.css'
 import { Button } from '@mui/material'
 import { ChangeEvent, useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
-import { useCourseStore } from '@/src/store/features/courses/courses'
-import { getFromStorage, setToStorage } from '@/src/utils/getFromStorage'
+import { useCourseStore } from '@/store/courses/courses'
+import { getFromStorage, setToStorage } from '@/utils/useLocaleStorage'
 
 interface IStudents {
     name: string,

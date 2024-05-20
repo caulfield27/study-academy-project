@@ -1,12 +1,12 @@
-import styles from '../../styles/auth.module.css'
+import styles from '../page.module.css'
 import { useState } from 'react';
-import  { handleSignup } from '@/src/store/features/auth/auth';
+import { handleSignup } from '@/store/auth/auth';
 import { Button } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useBooks } from '@/src/store/features/books/books';
+import { useBooks } from '@/store/books/books';
 import useSWR from 'swr';
-import { getUsers } from '@/src/utils/api';
+import { getUsers } from '@/utils/api';
 
 
 

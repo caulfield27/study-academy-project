@@ -1,12 +1,12 @@
-import styles from './quiz.module.css'
+import styles from './page.module.css'
 import { RadioGroup, FormControlLabel, Radio, Button } from '@mui/material'
-import CircularWithValueLabel from '@/src/components/progressBar/progressBar'
-import { useBooks } from '@/src/store/features/books/books'
-import { useQuizes } from '@/src/store/features/quizes/quizes'
-import QuizInfo from '@/src/components/quizInfo/quizInfo'
-import Result from '@/src/components/result/result'
+import CircularWithValueLabel from '@/components/progressBar/progress'
+import { useBooks } from '@/store/books/books'
+import { useQuizes } from '@/store/quizes/quizes'
+import QuizInfo from '@/components/quizInfo/quizInfo'
+import Result from '@/components/result/result'
 import { useEffect } from 'react'
-import { getFromStorage } from '@/src/utils/getFromStorage'
+import { getFromStorage } from '@/utils/useLocaleStorage'
 
 
 
@@ -70,7 +70,7 @@ const Quiz = () => {
                                     className={styles.options_wrap}
                                 >
 
-                                    {currentQuestion.variants.map((variant, ind) => {
+                                    {currentQuestion.variants.map((variant:any, ind: number) => {
                                         return <FormControlLabel
                                             key={ind + 1}
                                             value={variant}

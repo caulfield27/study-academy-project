@@ -1,5 +1,5 @@
-import styles from './questSidebar.module.css'
-import { navLinks } from './questRouts'
+import styles from '../sidebar.module.css'
+import { navLinks } from './questRoutes';
 import HomeIcon from '@mui/icons-material/Home';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import QuizIcon from '@mui/icons-material/Quiz';
@@ -8,7 +8,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import LoginIcon from '@mui/icons-material/Login';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useBooks } from '@/src/store/features/books/books';
+import { useBooks } from '@/store/books/books';
 
 
 const QuestSidebar = () => {

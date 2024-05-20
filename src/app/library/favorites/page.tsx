@@ -1,7 +1,7 @@
-import styles from './favorites.module.css'
-import {  useBooks } from '@/src/store/features/books/books';
-import { IFavBooks, books } from '@/src/store/features/books/booksInterfaces';
-import { getFromStorage, setToStorage } from '@/src/utils/getFromStorage';
+import styles from './page.module.css'
+import { useBooks } from '@/store/books/books';
+import { IFavBooks, books } from '@/store/books/booksTypes';
+import { getFromStorage, setToStorage } from '@/utils/useLocaleStorage';
 import { useEffect } from 'react';
 
 
@@ -20,7 +20,7 @@ const Favorites = () => {
     })
 
     const handleDelete = (currentBook:books)=>{
-        const filtered = favorites.filter((book) => book.currentBook.id !== currentBook.id)
+        const filtered = favorites.filter((book: { currentBook: { id: number; }; }) => book.currentBook.id !== currentBook.id)
         const getFavStorage = getFromStorage('favorites')
         if(getFavStorage){
             const removedBook = getFavStorage.filter((removeBook: IFavBooks)  => removeBook.currentBook.id !== currentBook.id)
@@ -45,7 +45,7 @@ const Favorites = () => {
                         </div> :
 
                         <div className={styles.favorites_container}>
-                            {favorites.map((book, ind) => {
+                            {favorites.map((book: { currentBook: books; }, ind: number) => {
                                 return <div key={ind + 1} className={styles.favorite_card}>
                                     <img src={book.currentBook.image} alt={book.currentBook.name} />
                                     <div className={styles.favoriteCard_content}>

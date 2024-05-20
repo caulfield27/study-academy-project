@@ -1,7 +1,7 @@
 import { IUserItem } from "../auth/auth";
-import { IFavCourse } from "./coursesType";
+import { IFavCourse } from "./coursesTypes";
 import { create } from "zustand";
-import { setToStorage } from "@/src/utils/getFromStorage";
+import { setToStorage } from "@/utils/useLocaleStorage";
 
 interface ICourses{
     favoriteCourses:IFavCourse[],

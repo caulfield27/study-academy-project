@@ -1,7 +1,7 @@
 import { Rating } from "@mui/material"
 import styles from './quizInfo.module.css'
-import { quizes } from "@/src/store/features/quizes/quizUtils/questions"
-import { useQuizes } from "@/src/store/features/quizes/quizes"
+import { quizes } from "@/store/quizes/quizUtils/questions"
+import { useQuizes } from "@/store/quizes/quizes"
 
 
 

@@ -1,5 +1,5 @@
 
-import { books } from "../store/features/books/booksInterfaces";
+import { books } from "@/store/books/booksTypes";
 
 export const getApi = async (path:string)=>{
     try{

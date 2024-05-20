@@ -1,13 +1,13 @@
-import styles from '../../styles/auth.module.css'
+import styles from '../page.module.css'
 import { useState } from 'react'
 import { Button } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import {  handleLogin } from '@/src/store/features/auth/auth'
-import { useBooks } from '@/src/store/features/books/books'
+import { handleLogin } from '@/store/auth/auth'
+import { useBooks } from '@/store/books/books'
 import useSWR from 'swr'
-import { getUsers } from '@/src/utils/api'
-import useAuth from '@/src/store/features/auth/auth'
+import { getUsers } from '@/utils/api'
+import useAuth from '@/store/auth/auth'
 
 
 const Login = ()=>{
