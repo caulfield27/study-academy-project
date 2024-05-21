@@ -14,17 +14,20 @@ type Actions = {
     incrementCounter: (payload:number)=> void,
     decrementCounter: (payload: number)=> void,
     getBooksCounter: (payload:number)=> void,
-    resetNotifications: (payload: number)=> void
+    resetNotifications: (payload: number)=> void,
+    setPostModal: (payload: boolean) => void
 
 }
 
 export const useBooks = create<IStates & Actions>()(devtools((set)=> ({
     booksModal: false,
+    postModal: false,
     dropdown: false,
     currentBook:{name:'',author:'',image:'',pdf:'',rating:0,released:'',description:'',id:0},
     favorites: [],
     booksNotifications: 0,
     setBooksModal: (payload) => set(()=> ({booksModal: payload})),
+    setPostModal: (payload) => set(()=> ({postModal: payload})),
     setCurrentBook: (payload) => set(()=> ({currentBook: payload})),
     setDropdown: (payload) => set(() => ({dropdown: payload})),
     getUserFavorites: (payload) => set(()=> ({favorites: payload})),

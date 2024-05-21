@@ -1,4 +1,3 @@
-"use client"
 import QuestSidebar from "./questSidebar/questSidebar";
 import LogedSidebar from "./userSIdebar/userSidebar";
 import { useEffect, useState } from "react";

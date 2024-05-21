@@ -25,7 +25,7 @@ export const navLinks = [
         active: false
     },
     {
-        path: '/login',
+        path: '/auth/login',
         name: 'Login',
         active: false
     },

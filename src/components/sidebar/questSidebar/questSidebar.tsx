@@ -7,7 +7,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import PersonIcon from '@mui/icons-material/Person';
 import LoginIcon from '@mui/icons-material/Login';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 import { useBooks } from '@/store/books/books';
 
 
@@ -16,7 +16,8 @@ const QuestSidebar = () => {
     <SchoolIcon/>,<PersonIcon/>,<LoginIcon/>]
     const router = useRouter()
     const {dropdown, setDropdown} = useBooks((state)=> state)
-    const currentPage = router.pathname;
+    const currentPage = usePathname()
+    
 
     
     return (

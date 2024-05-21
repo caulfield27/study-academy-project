@@ -12,7 +12,7 @@ import { Avatar, IconButton, Menu, MenuItem, Divider, ListItemIcon } from '@mui/
 import { Logout } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 import { Settings } from '@mui/icons-material';
 import Link from 'next/link';
 import { useCourseStore } from '@/store/courses/courses';
@@ -31,8 +31,8 @@ const LogedSidebar = () => {
     const {favoriteCourses, resetCourses} = useCourseStore()
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    const currentPage = navigate.pathname
-    console.log(favCounter)
+    const pathname = usePathname()
+
 
     useEffect(() => {
         setCurrentUser(JSON.parse(String(localStorage.getItem("loggedInUser"))))
@@ -82,7 +82,7 @@ const LogedSidebar = () => {
             <div className={styles.sidebar_container}>
                 <div className={dropdown ? styles.dropdown_active : styles.dropdown}>
                     {logedLinks.map((link, ind) => {
-                        const isActive = currentPage ===  link.path
+                        const isActive = pathname === link.path
                         return <Link key={ind + 1} className={isActive ? `${styles.nav_item} ${styles.active}` : styles.nav_item}
                             href={link.path}>
                             {icons[ind]} {link.name}
@@ -107,7 +107,7 @@ const LogedSidebar = () => {
                 <hr />
                 <div className={styles.navigation_wrap}>
                     {logedLinks.map((link, key) => {
-                        const isActive = currentPage === link.path
+                        const isActive = pathname === link.path
                         return <Link key={key} className={isActive ? `${styles.nav_item} ${styles.active}` : styles.nav_item}
                             href={link.path}>
                             {icons[key]}{link.name}

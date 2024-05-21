@@ -11,6 +11,7 @@ export interface books{
 
 export interface IStates{
     booksModal:boolean,
+    postModal: boolean
     dropdown: boolean,
     currentBook: books,
     favorites: IFavBooks[],

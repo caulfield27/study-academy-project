@@ -1,3 +1,4 @@
+"use client"
 import styles from './page.module.css'
 import { RadioGroup, FormControlLabel, Radio, Button } from '@mui/material'
 import CircularWithValueLabel from '@/components/progressBar/progress'
@@ -7,16 +8,17 @@ import QuizInfo from '@/components/quizInfo/quizInfo'
 import Result from '@/components/result/result'
 import { useEffect } from 'react'
 import { getFromStorage } from '@/utils/useLocaleStorage'
+import { Wrapper } from '@/components/wrapper/wrapper'
 
 
 
 const Quiz = () => {
-    const questions = useQuizes((state)=> state.questions)
-    const currentQuestionIndex = useQuizes((state)=> state.currentQuestionIndex)
-    const selectOption = useQuizes((state)=> state.selectOption)
-    const nextQuestion = useQuizes((state)=> state.nextQuestion)
-    const result = useQuizes((state)=> state.result)
-    const setQuestions = useQuizes((state)=> state.setQuestions)
+    const questions = useQuizes((state) => state.questions)
+    const currentQuestionIndex = useQuizes((state) => state.currentQuestionIndex)
+    const selectOption = useQuizes((state) => state.selectOption)
+    const nextQuestion = useQuizes((state) => state.nextQuestion)
+    const result = useQuizes((state) => state.result)
+    const setQuestions = useQuizes((state) => state.setQuestions)
     const dropdown = useBooks((state) => state.dropdown)
     let currentQuestion = useQuizes((state) => state.questions[currentQuestionIndex])
 
@@ -30,7 +32,7 @@ const Quiz = () => {
     const handleCheckboxChange = (event: any) => {
         selectOption(event.target.value)
     }
-    
+
     const handleNextQuestion = () => {
         nextQuestion()
     }
@@ -47,7 +49,7 @@ const Quiz = () => {
     return (
         <>
             {currentQuestion === undefined ? <h1>Loading...</h1> :
-                <div className={dropdown ? `${styles.jsQuiz_wrapper} ${styles.dropdown_active}` : styles.jsQuiz_wrapper}>
+                <Wrapper>
                     <div className={styles.quiz_container}>
                         <QuizInfo />
                         <div className={styles.quiz_content}>
@@ -70,7 +72,7 @@ const Quiz = () => {
                                     className={styles.options_wrap}
                                 >
 
-                                    {currentQuestion.variants.map((variant:any, ind: number) => {
+                                    {currentQuestion.variants.map((variant: any, ind: number) => {
                                         return <FormControlLabel
                                             key={ind + 1}
                                             value={variant}
@@ -92,7 +94,10 @@ const Quiz = () => {
                         </div>
 
                     </div>
-                </div>
+
+                </Wrapper>
+
+
             }
 
 

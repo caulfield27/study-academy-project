@@ -93,7 +93,7 @@ export const handleSignup = (email: string, fullName: string, password: string,
         } catch (e) {
             console.log(e)
         } finally {
-            navigate.push('/login')
+            navigate.push('/auth/login')
             Swal.fire({
                 title: 'Signed up successfull',
                 text: 'login with your email',

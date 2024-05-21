@@ -1,3 +1,4 @@
+"use client"
 import styles from './booksModal.module.css'
 import { useEffect, useState } from 'react'
 import { useBooks } from '@/store/books/books';

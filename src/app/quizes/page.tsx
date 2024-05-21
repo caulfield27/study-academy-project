@@ -1,3 +1,4 @@
+"use client"
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation';
 import { Rating } from '@mui/material';
@@ -6,19 +7,20 @@ import { quizes } from '@/store/quizes/quizUtils/questions';
 import { IGlobalQuestions } from '@/store/quizes/quizUtils/quizesTypes';
 import { useQuizes } from '@/store/quizes/quizes';
 import { setToStorage } from '@/utils/useLocaleStorage';
+import { Wrapper } from '@/components/wrapper/wrapper';
 
 
 
 
 const Quizes = () => {
     const navigate = useRouter()
-    const dropdown = useBooks((state)=> state.dropdown)
-    const setQuestions = useQuizes((state)=> state.setQuestions)
-    const resetQuiz = useQuizes((state)=> state.resetQuiz)
-    
+    const dropdown = useBooks((state) => state.dropdown)
+    const setQuestions = useQuizes((state) => state.setQuestions)
+    const resetQuiz = useQuizes((state) => state.resetQuiz)
 
-    
-    const OpenQuiz = (quiz:IGlobalQuestions) =>{
+
+
+    const OpenQuiz = (quiz: IGlobalQuestions) => {
         navigate.push('/quizes/quiz')
         setQuestions(quiz)
         setToStorage('questions', quiz)
@@ -27,7 +29,7 @@ const Quizes = () => {
 
     return (
         <>
-            <div className={dropdown ? `${styles.quiz_wrapper} ${styles.dropdown_active}` : styles.quiz_wrapper}>
+            <Wrapper>
                 <div className={styles.quizes_container}>
                     {quizes.map((quiz, ind) => {
                         return <div className={styles.quiz_card} key={ind + 1} onClick={() => OpenQuiz(quiz)}>
@@ -38,11 +40,13 @@ const Quizes = () => {
                         </div>
                     })}
                 </div>
-            </div>
-           
-            
+
+            </Wrapper>
+
+
+
         </>
     )
 }
- 
+
 export default Quizes;

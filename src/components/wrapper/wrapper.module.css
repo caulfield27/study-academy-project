@@ -1,0 +1,17 @@
+.wrapper{ 
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+@media screen and (max-width:1000px) {
+    .wrapper{
+        margin-top: 150px;
+    }
+    .adaptive_wrapper{
+        margin-top: 340px !important;
+    }
+    
+}

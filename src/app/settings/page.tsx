@@ -1,6 +1,11 @@
+import { Wrapper } from "@/components/wrapper/wrapper";
+
 const Settings = () => {
     return ( 
-        <h1>Settings</h1>
+        <Wrapper>
+            <h1>Settings</h1>
+        </Wrapper>
+        
      );
 }
  

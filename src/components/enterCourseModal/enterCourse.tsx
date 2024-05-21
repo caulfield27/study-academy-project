@@ -1,4 +1,6 @@
-import styles from '../enterCourseModal/enterCourse.module.css'
+"use client"
+
+import styles from './enterCourse.module.css'
 import { Button } from '@mui/material'
 import { ChangeEvent, useEffect, useState } from 'react'
 import Swal from 'sweetalert2'

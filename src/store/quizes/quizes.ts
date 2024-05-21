@@ -30,7 +30,7 @@ export const useQuizes=  create<IQuizState & Actions>()(devtools(immer((set)=>({
     resetQuiz: ()=> set((state)=>{
     state.currentQuestionIndex = 0;
     state.result = 0;
-    state.questions.forEach((question: { selected: null; isCorrect: boolean; }) => {
+    state.questions.forEach((question) => {
         question.selected = null; 
         question.isCorrect = false;
     });

@@ -7,6 +7,8 @@ interface ICourses{
     favoriteCourses:IFavCourse[],
     courseModal: boolean,
     favCounter: number,
+    search: string,
+    category: string
 }
 
 interface Actions{
@@ -17,6 +19,8 @@ interface Actions{
     decrementGFavCounter: (payload: number)=> void,
     resetFavCounter:() => void,
     getCounter: (payload: number)=> void,
+    setSearch: (payload: string)=> void,
+    setCategory: (payload: string)=> void
     
     
 
@@ -26,6 +30,10 @@ export const useCourseStore = create<ICourses & Actions>((set)=>({
     favoriteCourses: [],
     courseModal: false,
     favCounter: 0,
+    search: '',
+    category: '',
+    setSearch: (payload)=> set(()=> ({search: payload})),
+    setCategory: (payload)=> set(()=> ({category:payload})),
     setCourseModal: (payload)=> set(()=> ({courseModal: payload})),
     getUserCourses: (payload)=> set(()=> ({favoriteCourses: payload})),
     resetCourses: ()=> set(()=> ({favoriteCourses: []})),
