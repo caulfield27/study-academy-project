@@ -1,3 +1,5 @@
+
+
 import styles from './page.module.css'
 import CourseModal from '@/components/enterCourseModal/enterCourse';
 import {coursesType} from '@/store/courses/coursesTypes';
@@ -6,10 +8,11 @@ import { Course } from '@/components/course/course';
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { CourseInputs } from '@/components/coursesInputs/courseInputs';
 
+
 const CoursesCard = async () => {
 
     const data = await getApi('http://localhost:3002/courses')
-
+    
     return (
         <>
 

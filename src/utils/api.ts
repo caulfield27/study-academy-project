@@ -1,5 +1,8 @@
+'use server'
 
 import { books } from "@/store/books/booksTypes";
+import { revalidatePath } from "next/cache";
+
 
 export const getApi = async (path:string)=>{
     try{
@@ -28,7 +31,7 @@ export async function postData(path:string, arg:books){
     }catch(e){
         console.log(e)
     }finally{
-        console.log('done')
+        console.log('done: ')
     }
 
 }

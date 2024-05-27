@@ -3,7 +3,6 @@ import { books } from "@/store/books/booksTypes"
 import styles from './book.module.css'
 import { Button } from "@mui/material"
 import { useBooks } from "@/store/books/books"
-import BooksModal from "../booksModal/booksModal"
 
 
 export const Book = ({ book }: { book: books, }) => {
@@ -27,7 +26,6 @@ export const Book = ({ book }: { book: books, }) => {
 
     return (
         <>
-            {/* <BooksModal /> */}
             <div className={styles.book_card}>
                 <img src={book.image} alt={book.name} />
                 <div className={styles.card_content}>

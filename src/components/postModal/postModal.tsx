@@ -5,19 +5,19 @@ import { TextField } from '@mui/material'
 import { Button } from '@mui/material'
 import { books } from '@/store/books/booksTypes'
 import Swal from 'sweetalert2'
-import { postData } from '@/utils/api'
 import { isLInk } from '@/utils/checkValidation'
-import { useSWRConfig } from 'swr'
 import { useBooks } from '@/store/books/books'
+import { useRouter } from 'next/navigation'
+import { postData } from '@/utils/api'
 
 export interface IModal {
     page: number
 }
 
 const PostModal = ({ page }: IModal) => {
+    const router = useRouter()
     const postModal = useBooks((state)=> state.postModal)
     const setPostModal = useBooks((staet)=> staet.setPostModal)
-    const { mutate } = useSWRConfig()
     const [postedData, setPosterData] = useState<books>({
         name: '',
         author: '',
@@ -51,7 +51,7 @@ const PostModal = ({ page }: IModal) => {
             confirmButtonText: 'ok'
         }).then((result) => {
             if (result.isConfirmed) {
-                mutate(`http://localhost:3001/books?_page=${page ?? '1'}`, postData(`http://localhost:3001/books`, postedData))
+                postData('http://localhost:3001/books', postedData)
             }
         })
         document.body.classList.remove('open_modal')

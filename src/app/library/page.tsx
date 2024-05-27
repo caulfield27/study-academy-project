@@ -7,14 +7,14 @@ import PostModal from "@/components/postModal/postModal";
 import LibraryHeader from "@/components/libraryHeader/libraryHeader";
 import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
+import { revalidatePath } from 'next/cache';
 
 const Library = async (
-    {searchParams}:{searchParams?: {query?: string;_page?: string;}}
+    {searchParams}:{searchParams?: {query?: string, _page?: string,}}
 ) => {
-    console.log(searchParams) 
-    const data = await getApi(`http://localhost:3001/books?_page=${searchParams?._page ?? '1'}`)
 
-    
+    const res = await fetch(`http://localhost:3001/books?_page=${searchParams?._page ?? '1'}`,{cache:'no-store'})
+    const data = await res.json()
 
     return (
         <>
@@ -28,7 +28,7 @@ const Library = async (
                     display: "flex", flexDirection: "row", gap: '20px', justifyContent: 'center', alignItems: 'center',
                     marginTop: '65px'
                 }}>
-                    <LibraryHeader pages={data.items}/>
+                    <LibraryHeader pages={data.items} currentPage={searchParams?._page}/>
                     <PostModal page={Number(searchParams?._page)} />
                 </div>
 

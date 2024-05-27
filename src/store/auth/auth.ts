@@ -86,7 +86,7 @@ export const handleSignup = (email: string, fullName: string, password: string,
             userToken: `token!*${email}${password}`,
         }
         try {
-            const response = fetch('http://localhost:3001/users', {
+            fetch('http://localhost:3001/users', {
                 method: 'POST',
                 body: JSON.stringify(signedUser)
             })
