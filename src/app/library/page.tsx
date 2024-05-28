@@ -6,15 +6,14 @@ import PostModal from "@/components/postModal/postModal";
 import LibraryHeader from "@/components/libraryHeader/libraryHeader";
 import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
+import { log } from 'console';
+import { getApi } from '@/utils/api';
 
 const Library = async (
-    {searchParams}:{searchParams?: {query?: string, _page?: string,}}
+    { searchParams }: { searchParams?: { query?: string, _page?: string, } }
 ) => {
 
-
-    const res = await fetch(`http://localhost:3001/books?_page=${searchParams?._page ?? '1'}`, {next: {revalidate: 5}})  
-    const data = await res.json()
-
+    const data = await getApi(`http://localhost:3001/books?_page=${searchParams?._page ?? '1'}`)
     return (
         <>
             <BooksModal />
@@ -27,7 +26,7 @@ const Library = async (
                     display: "flex", flexDirection: "row", gap: '20px', justifyContent: 'center', alignItems: 'center',
                     marginTop: '65px'
                 }}>
-                    <LibraryHeader pages={data.items} currentPage={searchParams?._page}/>
+                    <LibraryHeader pages={data.items} currentPage={searchParams?._page} />
                     <PostModal page={Number(searchParams?._page)} />
                 </div>
 
@@ -41,8 +40,8 @@ const Library = async (
                 </div>
 
             </Wrapper>
-                
-           
+
+
 
 
         </>

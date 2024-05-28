@@ -15,12 +15,6 @@ export const getApi = async (path:string)=>{
     }
 }
 
-export async function getUsers(api: string){
-    const response = await fetch(api)
-    const data = await response.json()
-    return data
-}
-
 export async function postData(path:string, arg:books){
     try{
         const response = await fetch(path, {

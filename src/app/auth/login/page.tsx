@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { handleLogin } from '@/store/auth/auth'
 import { useBooks } from '@/store/books/books'
 import useSWR from 'swr'
-import { getUsers } from '@/utils/api'
+import { getApi } from '@/utils/api'
 import useAuth from '@/store/auth/auth'
 import { Wrapper } from '@/components/wrapper/wrapper'
 
@@ -18,7 +18,7 @@ const Login = () => {
     const navigate = useRouter()
     const setAuth = useAuth((state) => state.setAuth)
     const setCurrentUser = useAuth((state) => state.setCurrentUser)
-    const { data } = useSWR('http://localhost:3001/users', getUsers)
+    const { data } = useSWR('http://localhost:3001/users',getApi)
     const [validation, setValidation] = useState({
         email: false,
         password: false
