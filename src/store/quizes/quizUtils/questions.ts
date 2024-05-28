@@ -1,4 +1,4 @@
-import { IGlobalQuestions } from "./quizTypes";
+import { IGlobalQuestions } from "./quizesTypes"
 
 export const quizes:IGlobalQuestions[] = [
     {
