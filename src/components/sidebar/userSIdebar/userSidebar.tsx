@@ -20,8 +20,8 @@ import { useCourseStore } from '@/store/courses/courses';
 
 
 const LogedSidebar = () => {
-    const icons = [<HomeIcon />, <LocalLibraryIcon />, <QuizIcon />,
-    <SchoolIcon />, <PersonIcon />, <LoginIcon />]
+    const icons = [{logo: <HomeIcon/>},{logo: <LocalLibraryIcon/>},{logo:<QuizIcon/>},
+    {logo: <SchoolIcon/>},{logo: <PersonIcon/>},{logo:<LoginIcon/>}]
     const {dropdown, setDropdown, resetFavBooks} = useBooks((state) => state)
     const logOut = useAuth((state)=> state.logOut)
     const [currentUser, setCurrentUser] = useState<IUserItem[]>();
@@ -83,9 +83,9 @@ const LogedSidebar = () => {
                 <div className={dropdown ? styles.dropdown_active : styles.dropdown}>
                     {logedLinks.map((link, ind) => {
                         const isActive = pathname === link.path
-                        return <Link key={ind + 1} className={isActive ? `${styles.nav_item} ${styles.active}` : styles.nav_item}
+                        return <Link key={link.path} className={isActive ? `${styles.nav_item} ${styles.active}` : styles.nav_item}
                             href={link.path}>
-                            {icons[ind]} {link.name}
+                            {icons[ind].logo} {link.name}
                         </Link>
                     })}
                     <div className={styles.x_wrap}>
@@ -108,9 +108,9 @@ const LogedSidebar = () => {
                 <div className={styles.navigation_wrap}>
                     {logedLinks.map((link, key) => {
                         const isActive = pathname === link.path
-                        return <Link key={key} className={isActive ? `${styles.nav_item} ${styles.active}` : styles.nav_item}
+                        return <Link key={link.path} className={isActive ? `${styles.nav_item} ${styles.active}` : styles.nav_item}
                             href={link.path}>
-                            {icons[key]}{link.name}
+                            {icons[key].logo}{link.name}
                         </Link>
                     })}
                 </div>

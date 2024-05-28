@@ -68,7 +68,7 @@ const Login = () => {
                             <Button type='submit' variant='contained' disabled={!isDataComplete}>login</Button>
                         </form>
                         <footer className={styles.login_footer}>
-                            <span>You don't have account yet?</span>
+                            <span>You don&apos;t have account yet?</span>
                             <Link href="/auth/signUp">sign up</Link>
                         </footer>
                     </div>

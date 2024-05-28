@@ -17,8 +17,8 @@ const Home = ()=>{
             <div className={dropdown ? `${styles.home_wrapper} ${styles.dropdown_adaptive}` : styles.home_wrapper}>
                 <div className={styles.home_container}>
                     <div className={styles.header_text}>
-                        <h1>Unlock Your Coding Potential with Humo Academy's Programming Courses</h1>
-                        <p>Welcome to Humo Academy, where we empower you to master the art of programming. Discover our diverse range of courses designed to cater to beginners and seasoned coders alike. Whether you're interested in web development, data science, or mobile app creation, we have the resources and expertise to guide you towards success. Join us on a journey of learning and innovation today!</p>
+                        <h1>Unlock Your Coding Potential with Humo Academy&apos;s Programming Courses</h1>
+                        <p>Welcome to Humo Academy, where we empower you to master the art of programming. Discover our diverse range of courses designed to cater to beginners and seasoned coders alike. Whether you&apos;re interested in web development, data science, or mobile app creation, we have the resources and expertise to guide you towards success. Join us on a journey of learning and innovation today!</p>
                         <button onClick={() => navigate.push('/courses')}>Start to learn free</button>
                     </div>
                     <div className={styles.header_img}>

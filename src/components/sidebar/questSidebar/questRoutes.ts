@@ -1,8 +1,10 @@
+
+
 export const navLinks = [
     {
         path: '/',
         name: 'Home',
-        active: true
+        active: true,
     },
     {
         path: '/library',

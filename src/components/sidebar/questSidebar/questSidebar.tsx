@@ -12,8 +12,8 @@ import { useBooks } from '@/store/books/books';
 
 
 const QuestSidebar = () => {
-    const icons = [<HomeIcon/>,<LocalLibraryIcon/>,<QuizIcon/>,
-    <SchoolIcon/>,<PersonIcon/>,<LoginIcon/>]
+    const icons = [{logo: <HomeIcon/>},{logo: <LocalLibraryIcon/>},{logo:<QuizIcon/>},
+    {logo: <SchoolIcon/>},{logo: <PersonIcon/>},{logo:<LoginIcon/>}]
     const router = useRouter()
     const {dropdown, setDropdown} = useBooks((state)=> state)
     const currentPage = usePathname()
@@ -27,9 +27,9 @@ const QuestSidebar = () => {
                 <div className={dropdown ? styles.dropdown_active : styles.dropdown}>
                     {navLinks.map((link, ind) => {
                         const isActive = currentPage === link.path;
-                        return <Link key={ind + 1} className={isActive ? `${styles.nav_item} ${styles.active}` : styles.nav_item}
+                        return <Link key={link.path} className={isActive ? `${styles.nav_item} ${styles.active}` : styles.nav_item}
                             href={link.path}>
-                            {icons[ind]} {link.name}
+                            {icons[ind].logo} {link.name}
                         </Link>
                     })}
                     <div className={styles.x_wrap}>
@@ -52,10 +52,10 @@ const QuestSidebar = () => {
                 <div className={styles.navigation_wrap}>
                     {navLinks.map((link, key) => {
                         const isActive = currentPage === link.path;
-                        return <Link key={key} className={isActive ? 
+                        return <Link key={link.path} className={isActive ? 
                             `${styles.nav_item} ${styles.active}` : styles.nav_item}
                             href={link.path}>
-                            {icons[key]}{link.name}
+                            {icons[key].logo}{link.name}
                         </Link>
                     
                     })}

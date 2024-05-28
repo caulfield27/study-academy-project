@@ -131,7 +131,7 @@ const PostModal = ({ page }: IModal) => {
                                 <span>required field</span>
                             }
                             {postedData.rating === null ? '' :
-                                postedData.rating > 5 && validation.rating && <span>rating can't be higher then 5</span>}
+                                postedData.rating > 5 && validation.rating && <span>rating can&apos;t be higher then 5</span>}
                             <TextField id="outlined-basic" name="released" label="released" variant="outlined" onChange={handleDataChange}
                                 onFocus={() => setValidation({ ...validation, released: false })}
                                 onBlur={() => setValidation({ ...validation, released: true })} />
