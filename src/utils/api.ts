@@ -6,8 +6,10 @@ import axios from "axios";
 import { cache } from "react";
 
 
-export const instanceFirst = axios.create({baseURL:process.env.BASE_URL_FIRST})
-export const instanceSecond = axios.create({baseURL: process.env.BASE_URL_SECOND})
+const apiUrlFirst = process.env.BASE_URL_FIRST || 'http://localhost:3001';
+const apiUrlSecond = process.env.BASE_URL_SECOND || 'http://localhost:3002'
+export const instanceFirst = axios.create({baseURL:apiUrlFirst})
+export const instanceSecond = axios.create({baseURL:apiUrlSecond})
 
 
 export const getBooks = cache(async(page:string)=>{
