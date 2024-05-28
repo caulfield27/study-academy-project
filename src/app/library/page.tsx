@@ -13,7 +13,7 @@ const Library = async (
     { searchParams }: { searchParams?: { query?: string, _page?: string, } }
 ) => {
 
-    const data = await getApi(`${process.env.BASE_URL_2}/books?_page=${searchParams?._page ?? '1'}`)
+    const data = await getApi(`${process.env.BASE_URL_SECOND}/books?_page=${searchParams?._page ?? '1'}`)
     return (
         <>
             <BooksModal />

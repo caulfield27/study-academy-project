@@ -18,7 +18,7 @@ const Login = () => {
     const navigate = useRouter()
     const setAuth = useAuth((state) => state.setAuth)
     const setCurrentUser = useAuth((state) => state.setCurrentUser)
-    const { data } = useSWR(`${process.env.BASE_URL_2}/users`, getApi)
+    const { data } = useSWR(`${process.env.BASE_URL_SECOND}/users`, getApi)
     const [validation, setValidation] = useState({
         email: false,
         password: false

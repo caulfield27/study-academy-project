@@ -17,7 +17,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [fullName, setFullName] = useState('')
-    const { data } = useSWR(`${process.env.BASE_URL_2}/users`, getApi)
+    const { data } = useSWR(`${process.env.BASE_URL_SECOND}/users`, getApi)
     const navigate = useRouter()
     const [validation, setValidation] = useState({
         email: false,
