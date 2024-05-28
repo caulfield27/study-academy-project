@@ -11,7 +11,7 @@ import { CourseInputs } from '@/components/coursesInputs/courseInputs';
 
 const CoursesCard = async () => {
 
-    const data = await getApi('http://localhost:3002/courses')
+    const data = await getApi(`${process.env.BASE_URL_1}/courses`)
     
     return (
         <>
