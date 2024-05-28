@@ -51,7 +51,7 @@ const PostModal = ({ page }: IModal) => {
             confirmButtonText: 'ok'
         }).then((result) => {
             if (result.isConfirmed) {
-                postData('http://localhost:3001/books', postedData)
+                postData('/books', postedData)
             }
         })
         document.body.classList.remove('open_modal')

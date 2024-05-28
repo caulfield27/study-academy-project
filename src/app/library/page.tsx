@@ -7,13 +7,19 @@ import LibraryHeader from "@/components/libraryHeader/libraryHeader";
 import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { log } from 'console';
-import { getApi } from '@/utils/api';
+import { cache } from 'react';
+import { getBooks, instanceFirst } from '@/utils/api';
+// import { getApi } from '@/utils/api';
+
+export const revalidate = 5
+
 
 const Library = async (
     { searchParams }: { searchParams?: { query?: string, _page?: string, } }
 ) => {
 
-    const data = await getApi(`${process.env.BASE_URL_SECOND}/books?_page=${searchParams?._page ?? '1'}`)
+    const data = await getBooks(searchParams?._page??'1')
+    // const data = await getApi(`${process.env.BASE_URL_SECOND}/books?_page=${searchParams?._page ?? '1'}`)
     return (
         <>
             <BooksModal />

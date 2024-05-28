@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useBooks } from '@/store/books/books';
 import useSWR from 'swr';
-import { getApi } from '@/utils/api';
 import { Wrapper } from '@/components/wrapper/wrapper';
+import { getUsers } from '@/utils/api';
 
 
 
@@ -17,7 +17,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [fullName, setFullName] = useState('')
-    const { data } = useSWR(`${process.env.BASE_URL_SECOND}/users`, getApi)
+    const { data } = useSWR(`/users`,getUsers)
     const navigate = useRouter()
     const [validation, setValidation] = useState({
         email: false,

@@ -3,15 +3,15 @@
 import styles from './page.module.css'
 import CourseModal from '@/components/enterCourseModal/enterCourse';
 import {coursesType} from '@/store/courses/coursesTypes';
-import { getApi } from '@/utils/api';
 import { Course } from '@/components/course/course';
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { CourseInputs } from '@/components/coursesInputs/courseInputs';
+import { getCourses } from '@/utils/api';
 
 
 const CoursesCard = async () => {
 
-    const data = await getApi(`${process.env.BASE_URL_FIRST}/courses`)
+    const data = await getCourses('/courses')
     
     return (
         <>
