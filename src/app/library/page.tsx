@@ -2,18 +2,17 @@
 import styles from './page.module.css'
 import { books } from "@/store/books/booksTypes";
 import BooksModal from "@/components/booksModal/booksModal";
-import { getApi } from "@/utils/api";
 import PostModal from "@/components/postModal/postModal";
 import LibraryHeader from "@/components/libraryHeader/libraryHeader";
 import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
-import { revalidatePath } from 'next/cache';
 
 const Library = async (
     {searchParams}:{searchParams?: {query?: string, _page?: string,}}
 ) => {
 
-    const res = await fetch(`http://localhost:3001/books?_page=${searchParams?._page ?? '1'}`,{cache:'no-store'})
+
+    const res = await fetch(`http://localhost:3001/books?_page=${searchParams?._page ?? '1'}`, {next: {revalidate: 5}})  
     const data = await res.json()
 
     return (

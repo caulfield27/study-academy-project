@@ -11,7 +11,6 @@ const LibraryHeader = ({pages, currentPage}:{pages: number,currentPage:string | 
     const navigate = useRouter()
     const searchParams = useSearchParams()
     const pathname = usePathname()
-    console.log(totalPages)
     
     const handleChangePage = (event: any, value: number) => {
         const params = new URLSearchParams(searchParams)
