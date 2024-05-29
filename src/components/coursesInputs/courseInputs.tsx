@@ -2,12 +2,15 @@
 
 import { useCourseStore } from '@/store/courses/courses'
 import styles from './courseInputs.module.css'
+import { FunctionComponent } from 'react'
+
+
 
 export const CourseInputs = () => {
-    const search = useCourseStore((state) => state.search)
-    const setSearch = useCourseStore((state) => state.setSearch)
-    const category = useCourseStore((state) => state.search)
-    const setCategory = useCourseStore((state) => state.setCategory)
+    // const search = useCourseStore((state) => state.search)
+    // const setSearch = useCourseStore((state) => state.setSearch)
+    // const category = useCourseStore((state) => state.search)
+    // const setCategory = useCourseStore((state) => state.setCategory)
 
 
     return (
@@ -18,12 +21,12 @@ export const CourseInputs = () => {
             <div className={styles.courses_filter}>
                 <input type="text"
                     placeholder='search'
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    // value={query}
+                    // onChange={(e) => setQuery(e.target.value)}
                 />
                 <select
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                    // value={category}
+                    // onChange={(e) => setCategory(e.target.value)}
                 >
                     <option value="">All Categories</option>
                     <option value="Front-end">Front-end</option>

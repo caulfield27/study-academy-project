@@ -5,9 +5,9 @@ import { useState } from "react"
 import { useRouter, useSearchParams, usePathname } from "next/navigation"
 
 
+
 const LibraryHeader = ({pages, currentPage}:{pages: number,currentPage:string | any})=>{
     const totalPages = Math.ceil(pages) / 10
-    
     const navigate = useRouter()
     const searchParams = useSearchParams()
     const pathname = usePathname()
@@ -16,7 +16,6 @@ const LibraryHeader = ({pages, currentPage}:{pages: number,currentPage:string | 
         const params = new URLSearchParams(searchParams)
         params.set('_page', value.toString())
         navigate.replace(`${pathname}?${params.toString()}`)
-       
     };
 
 
@@ -28,7 +27,8 @@ const LibraryHeader = ({pages, currentPage}:{pages: number,currentPage:string | 
             </div>
 
             <Stack spacing={2} className={styles.pagination_wrap}>
-                <Pagination className={styles.pagination} defaultValue={currentPage} count={Math.ceil(totalPages)} page={Number(currentPage)} onChange={handleChangePage} />
+                <Pagination className={styles.pagination} defaultValue={currentPage ? Number(currentPage) : 1} 
+                count={Math.ceil(totalPages)} page={currentPage ? Number(currentPage) : 1} onChange={handleChangePage} />
             </Stack>
         </>
 

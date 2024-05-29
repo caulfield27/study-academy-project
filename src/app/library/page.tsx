@@ -8,8 +8,7 @@ import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { log } from 'console';
 import { cache } from 'react';
-import { getBooks, instanceFirst } from '@/utils/api';
-// import { getApi } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 
 export const revalidate = 5
 
@@ -18,8 +17,7 @@ const Library = async (
     { searchParams }: { searchParams?: { query?: string, _page?: string, } }
 ) => {
 
-    const data = await getBooks(searchParams?._page??'1')
-    // const data = await getApi(`${process.env.BASE_URL_SECOND}/books?_page=${searchParams?._page ?? '1'}`)
+    const data = await fetchData(`http://localhost:3001/books?_page=${searchParams?._page??'1'}`)
     return (
         <>
             <BooksModal />
@@ -33,7 +31,7 @@ const Library = async (
                     marginTop: '65px'
                 }}>
                     <LibraryHeader pages={data.items} currentPage={searchParams?._page} />
-                    <PostModal page={Number(searchParams?._page)} />
+                    <PostModal/>
                 </div>
 
                 <div className={styles.library_container}>

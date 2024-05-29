@@ -10,11 +10,7 @@ import { useBooks } from '@/store/books/books'
 import { useRouter } from 'next/navigation'
 import { postData } from '@/utils/api'
 
-export interface IModal {
-    page: number
-}
-
-const PostModal = ({ page }: IModal) => {
+const PostModal = () => {
     const router = useRouter()
     const postModal = useBooks((state)=> state.postModal)
     const setPostModal = useBooks((staet)=> staet.setPostModal)
@@ -51,7 +47,7 @@ const PostModal = ({ page }: IModal) => {
             confirmButtonText: 'ok'
         }).then((result) => {
             if (result.isConfirmed) {
-                postData('/books', postedData)
+                postData('http://localhost:3001/books', postedData)
             }
         })
         document.body.classList.remove('open_modal')

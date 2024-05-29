@@ -9,7 +9,7 @@ import { useBooks } from '@/store/books/books'
 import useSWR from 'swr'
 import useAuth from '@/store/auth/auth'
 import { Wrapper } from '@/components/wrapper/wrapper'
-import { getUsers } from '@/utils/api'
+import { fetchData } from '@/utils/api'
 
 
 const Login = () => {
@@ -18,7 +18,7 @@ const Login = () => {
     const navigate = useRouter()
     const setAuth = useAuth((state) => state.setAuth)
     const setCurrentUser = useAuth((state) => state.setCurrentUser)
-    const { data } = useSWR(`/users`, getUsers)
+    const { data } = useSWR(`http://localhost:3001/users`, fetchData)
     const [validation, setValidation] = useState({
         email: false,
         password: false

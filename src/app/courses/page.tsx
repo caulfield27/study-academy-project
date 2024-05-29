@@ -1,17 +1,15 @@
 
-
 import styles from './page.module.css'
 import CourseModal from '@/components/enterCourseModal/enterCourse';
 import {coursesType} from '@/store/courses/coursesTypes';
 import { Course } from '@/components/course/course';
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { CourseInputs } from '@/components/coursesInputs/courseInputs';
-import { getCourses } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 
 
 const CoursesCard = async () => {
-
-    const data = await getCourses('/courses')
+    const data = await fetchData(`http://localhost:3002/courses`)   
     
     return (
         <>

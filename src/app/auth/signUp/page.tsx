@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { useBooks } from '@/store/books/books';
 import useSWR from 'swr';
 import { Wrapper } from '@/components/wrapper/wrapper';
-import { getUsers } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 
 
 
@@ -17,7 +17,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [fullName, setFullName] = useState('')
-    const { data } = useSWR(`/users`,getUsers)
+    const { data } = useSWR(`http://localhost:3001/users`, fetchData)
     const navigate = useRouter()
     const [validation, setValidation] = useState({
         email: false,

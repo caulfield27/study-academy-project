@@ -24,7 +24,7 @@ export const Course = ({course}: {course: coursesType}) => {
         document.body.classList.add('open_modal')
     }
     
-    const handleFavoriteCourse = (currentCourse: coursesType) => {
+    const handleFavoriteCourse = (currentCourse: any) => {
         const getFavStorage = getFromStorage('favCourses')
 
         if (isAuth) {
