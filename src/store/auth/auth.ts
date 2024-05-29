@@ -38,9 +38,9 @@ export default useAuth
 
 export const handleLogin = (email:string, password:string, 
     navigate:any, users:IUserItem[], setAuth:Function, setCurrentUser:Function) => { 
-        const loggedInUser = users ? users.filter((user:IUserItem)=>{
+        const loggedInUser = users === undefined ? [] : users.filter((user:IUserItem)=>{
             return user.userEmail === email && user.userPassword === password
-        }) : []
+        }) 
         
         if (loggedInUser.length > 0) {
             setAuth(true)
