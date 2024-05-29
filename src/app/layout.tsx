@@ -24,13 +24,13 @@ export default function RootLayout({
   const getBooksCounter = useBooks((state) => state.getBooksCounter)
   const courseNot = useCourseStore((state) => state.favCounter)
 
-  // useEffect(() => {
-  //   if (isAuth) {
-  //     setUserFavBooks(getFromStorage('favorites'), getUserFavorites, currentUser)
-  //     setUserFavCourse(getFromStorage('favCourses'), currentUser, getUserCourses,)
-  //   }
+  useEffect(() => {
+    if (isAuth) {
+      setUserFavBooks(getFromStorage('favorites'), getUserFavorites, currentUser)
+      setUserFavCourse(getFromStorage('favCourses'), currentUser, getUserCourses,)
+    }
 
-  // }, [isAuth, currentUser])
+  }, [isAuth])
 
   useEffect(() => {
     if (getFromStorage('favCourseCounter')) {

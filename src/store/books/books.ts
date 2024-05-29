@@ -50,7 +50,7 @@ export const useBooks = create<IStates & Actions>()(devtools((set)=> ({
 
 
 export const setUserFavBooks = (favBooks:IFavBooks[], getUserFavorites:Function,currentUser:IUserItem[])=>{
-    const  customFav = favBooks.filter(book => book.userToken === currentUser[0].userToken)
+    const  customFav = favBooks ? favBooks.filter(book => book.userToken === currentUser[0].userToken) : []
     getUserFavorites(customFav)
 }
 
