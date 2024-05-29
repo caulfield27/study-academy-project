@@ -57,12 +57,18 @@ export const BooksModal = () => {
                 
 
             } else {
+                const favBooks = { userToken: currentUser[0].userToken, currentBook: book }
                 if (getFavStorage) {
-                    const favBooks = { userToken: currentUser[0].userToken, currentBook: book }
+                    
                     getFavStorage.push(favBooks)
                     setToStorage('favorites', getFavStorage)
                     const newFavList = [...favorites, favBooks]
                     getUserFavorites(newFavList)
+                }else{
+                    const newFavorites = []
+                    newFavorites.push(favBooks)
+                    setToStorage('favorites', newFavorites)
+
                 }
                 incrementNot(booksNotifications+=1)
 
