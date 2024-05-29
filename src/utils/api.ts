@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 
 export async function fetchData(api:string){
     try{
-        const response = await fetch(api , {next: {revalidate: 5}});
+        const response = await fetch(api, {next: {revalidate:5}});
         const data = await response.json()
         return data
     }catch(e){
