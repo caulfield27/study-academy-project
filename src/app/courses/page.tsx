@@ -6,14 +6,10 @@ import { Course } from '@/components/course/course';
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { CourseInputs } from '@/components/coursesInputs/courseInputs';
 import { fetchData } from '@/utils/api';
+import { CircularProgress } from '@mui/material';
 
 
 const CoursesCard = async () => {
-    if(!process.env.BASED_URL){
-        return (
-            <h1>LOADING...</h1>
-        )
-    }
     const data = await fetchData(`${process.env.BASED_URL}/api/courses`)   
     
     return (
@@ -23,7 +19,8 @@ const CoursesCard = async () => {
             <Wrapper>
                 <CourseInputs/>
                 <div className={styles.cards_container}>
-                    {
+                    {!process.env.BASED_URL ? 
+                        <CircularProgress/> :
                         data.map((course: coursesType) =>
                             <Course course={course} key={course.id} />
                         )

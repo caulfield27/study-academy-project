@@ -7,6 +7,7 @@ import LibraryHeader from "@/components/libraryHeader/libraryHeader";
 import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { fetchData } from '@/utils/api';
+import { CircularProgress, circularProgressClasses } from '@mui/material';
 
 export const revalidate = 5
 
@@ -15,13 +16,7 @@ const Library = async (
     { searchParams }: { searchParams?: { query?: string, _page?: string, } }
 ) => {
 
-    if(!process.env.BASED_URL){
-        return (
-            <h1>LOADING...</h1>
-        )
-    }
-
-    const data = await fetchData(`${process.env.BASED_URL}/api/books`)
+    const data = await fetchData(`${process.env.BASED_URL}/api/books?_page=${searchParams?._page??'1'}`)
     return (
         <>
             <BooksModal />
@@ -34,15 +29,19 @@ const Library = async (
                     display: "flex", flexDirection: "row", gap: '20px', justifyContent: 'center', alignItems: 'center',
                     marginTop: '65px'
                 }}>
-                    <LibraryHeader pages={data.items} currentPage={searchParams?._page} />
+                    <LibraryHeader pages={data.total} currentPage={searchParams?._page} />
                     <PostModal/>
                 </div>
 
                 <div className={styles.library_container}>
+                    {!process.env.BASED_URL ?
+                        <CircularProgress/> :
+                        data.data.map((book: books) => {
+                            return <Book book={book} key={book.id} />
+                        })
+                    }
 
-                    {data.map((book: books) => {
-                        return <Book book={book} key={book.id} />
-                    })}
+                    
 
 
                 </div>
