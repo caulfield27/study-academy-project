@@ -17,7 +17,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [fullName, setFullName] = useState('')
-    const { data } = useSWR(`http://localhost:3001/users`, fetchData)
+    const { data } = useSWR(`${process.env.BASED_URL}/api/users`, fetchData)
     const navigate = useRouter()
     const [validation, setValidation] = useState({
         email: false,

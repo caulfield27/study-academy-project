@@ -6,8 +6,6 @@ import PostModal from "@/components/postModal/postModal";
 import LibraryHeader from "@/components/libraryHeader/libraryHeader";
 import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
-import { log } from 'console';
-import { cache } from 'react';
 import { fetchData } from '@/utils/api';
 
 export const revalidate = 5
@@ -17,7 +15,7 @@ const Library = async (
     { searchParams }: { searchParams?: { query?: string, _page?: string, } }
 ) => {
 
-    const data = await fetchData(`http://localhost:3001/books?_page=${searchParams?._page??'1'}`)
+    const data = await fetchData(`${process.env.BASED_URL}/api/books`)
     return (
         <>
             <BooksModal />
@@ -36,7 +34,7 @@ const Library = async (
 
                 <div className={styles.library_container}>
 
-                    {data.data.map((book: books) => {
+                    {data.map((book: books) => {
                         return <Book book={book} key={book.id} />
                     })}
 
