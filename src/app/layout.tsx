@@ -30,7 +30,7 @@ export default function RootLayout({
       setUserFavCourse(getFromStorage('favCourses'), currentUser, getUserCourses,)
     }
 
-  }, [isAuth])
+  }, [isAuth, currentUser])
 
   useEffect(() => {
     if (getFromStorage('favCourseCounter')) {
