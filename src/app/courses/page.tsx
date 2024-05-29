@@ -9,6 +9,11 @@ import { fetchData } from '@/utils/api';
 
 
 const CoursesCard = async () => {
+    if(!process.env.BASED_URL){
+        return (
+            <h1>LOADING...</h1>
+        )
+    }
     const data = await fetchData(`${process.env.BASED_URL}/api/courses`)   
     
     return (

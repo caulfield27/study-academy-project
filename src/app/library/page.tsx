@@ -15,6 +15,12 @@ const Library = async (
     { searchParams }: { searchParams?: { query?: string, _page?: string, } }
 ) => {
 
+    if(!process.env.BASED_URL){
+        return (
+            <h1>LOADING...</h1>
+        )
+    }
+
     const data = await fetchData(`${process.env.BASED_URL}/api/books`)
     return (
         <>
