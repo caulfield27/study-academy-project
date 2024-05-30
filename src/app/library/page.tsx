@@ -9,14 +9,12 @@ import { Wrapper } from '@/components/wrapper/wrapper';
 import { fetchData } from '@/utils/api';
 import { CircularProgress, circularProgressClasses } from '@mui/material';
 
-export const revalidate = 5
-
 
 const Library = async (
-    { searchParams }: { searchParams?: { query?: string, _page?: string, } }
+    { searchParams }: { searchParams?: { _search?: string, _page?: string, } }
 ) => {
 
-    const data = await fetchData(`${process.env.BASED_URL}/api/books?_page=${searchParams?._page??'1'}`)
+    const data = await fetchData(`${process.env.BASED_URL}/api/books?_page=${searchParams?._page??'1'}&_search=${searchParams?._search??''}`)
     return (
         <>
             <BooksModal />
@@ -25,11 +23,8 @@ const Library = async (
                     <h1>Programming books recommended by<br />Humo Academy</h1>
 
                 </div>
-                <div style={{
-                    display: "flex", flexDirection: "row", gap: '20px', justifyContent: 'center', alignItems: 'center',
-                    marginTop: '65px'
-                }}>
-                    <LibraryHeader pages={data.total} currentPage={searchParams?._page} />
+                <div className={styles.header_container}>
+                    <LibraryHeader pages={data.total} currentPage={searchParams?._page} search={searchParams?._search??''}/>
                     <PostModal/>
                 </div>
 

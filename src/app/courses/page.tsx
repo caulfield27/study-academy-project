@@ -9,15 +9,15 @@ import { fetchData } from '@/utils/api';
 import { CircularProgress } from '@mui/material';
 
 
-const CoursesCard = async () => {
-    const data = await fetchData(`${process.env.BASED_URL}/api/courses`)   
+const CoursesCard = async ({searchParams} : {searchParams? : {_search: string}}) => {
+    const data = await fetchData(`${process.env.BASED_URL}/api/courses?_search=${searchParams?._search??''}`)   
     
     return (
         <>
 
             <CourseModal />
             <Wrapper>
-                <CourseInputs/>
+                <CourseInputs search={searchParams?._search??''}/>
                 <div className={styles.cards_container}>
                     {!process.env.BASED_URL ? 
                         <CircularProgress/> :

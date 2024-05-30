@@ -9,20 +9,18 @@
     gap: 10px;
 } */
 
-.searchInput::placeholder{
-    color: grey;
 
-}
-
-.searchInput{       
-    width: 300px;
+.library_navigation input{
+    border: 1px solid orangered;
+    border-radius: 12px;
+    padding: 10px;
     outline: none;
-    padding: 5px;
-    border-radius: 8px;
-    border: 1px solid #FB6D48;
-    
-
 }
+
+.library_navigation input::placeholder{
+    font-size: 16px;
+}
+
 
 .favorite_wrap{
     position: relative;

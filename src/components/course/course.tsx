@@ -47,12 +47,13 @@ export const Course = ({ course }: { course: coursesType }) => {
                     setToStorage('favCourses', getFavStorage)
                     const newFavList = [...favoriteCourses, favCourse]
                     getUserCourses(newFavList)
-                    incrementFavCounter(favCounter += 1)
                 }else{
                     const newFavCourses = []
                     newFavCourses.push(favCourse)
                     setToStorage('favCourses',newFavCourses)
+                    
                 }
+                incrementFavCounter(favCounter += 1)
 
 
 

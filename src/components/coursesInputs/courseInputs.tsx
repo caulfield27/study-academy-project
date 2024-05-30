@@ -1,17 +1,22 @@
 "use client"
-
-import { useCourseStore } from '@/store/courses/courses'
 import styles from './courseInputs.module.css'
 import { FunctionComponent } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 
 
-export const CourseInputs = () => {
-    // const search = useCourseStore((state) => state.search)
-    // const setSearch = useCourseStore((state) => state.setSearch)
-    // const category = useCourseStore((state) => state.search)
-    // const setCategory = useCourseStore((state) => state.setCategory)
+export const CourseInputs = ({search}: {search: string}) => {
+    const searchParams = useSearchParams()
+    const params = new URLSearchParams(searchParams)
+    const navigate = useRouter()
+    const pathName = usePathname()
 
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>)=>{
+        params.set('_search', e.target.value)
+        navigate.replace(`${pathName}?${params.toString()}`)
+
+        
+    } 
 
     return (
         <>
@@ -20,20 +25,20 @@ export const CourseInputs = () => {
             </div>
             <div className={styles.courses_filter}>
                 <input type="text"
-                    placeholder='search'
-                    // value={query}
-                    // onChange={(e) => setQuery(e.target.value)}
+                    placeholder='search...'
+                    value={search}
+                    onChange={handleSearch}
                 />
-                <select
+                {/* <select
                     // value={category}
                     // onChange={(e) => setCategory(e.target.value)}
-                >
-                    <option value="">All Categories</option>
-                    <option value="Front-end">Front-end</option>
-                    <option value="python">Python</option>
-                    <option value="golang">Golang</option>
-                    <option value="android">Android</option>
-                </select>
+                // >
+                //     <option value="">All Categories</option>
+                //     <option value="Front-end">Front-end</option>
+                //     <option value="python">Python</option>
+                //     <option value="golang">Golang</option>
+                //     <option value="android">Android</option>
+                // </select> */}
 
             </div>
         </>

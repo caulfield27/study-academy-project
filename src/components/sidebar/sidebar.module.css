@@ -203,7 +203,7 @@
     }
     .dropdown_btn{
         display: block;
-        margin-right: 100px;
+        margin-right: 50px;
         cursor: pointer;
     }
     .sidebar_header{
@@ -223,3 +223,4 @@
     }
     
 }
+

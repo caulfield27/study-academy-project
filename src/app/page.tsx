@@ -3,6 +3,7 @@
 import { useBooks } from '@/store/books/books'
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation'
+import { Wrapper } from '@/components/wrapper/wrapper'
 
 
 
@@ -14,7 +15,7 @@ const Home = ()=>{
 
     return (
         <>
-            <div className={dropdown ? `${styles.home_wrapper} ${styles.dropdown_adaptive}` : styles.home_wrapper}>
+            <Wrapper>
                 <div className={styles.home_container}>
                     <div className={styles.header_text}>
                         <h1>Unlock Your Coding Potential with Humo Academy&apos;s Programming Courses</h1>
@@ -25,7 +26,7 @@ const Home = ()=>{
                         <img src="https://cdn2.hexlet.io/assets/main_landing_hero-a0ae296e0b9f2395c6c442b2104000ddc260fabd559bef2b779e5fa039619192.svg" alt="" />
                     </div>
                 </div>
-            </div>
+            </Wrapper>
 
 
 

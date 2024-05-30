@@ -3,21 +3,29 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   const books = data.books
-
   const DEFAULT_PAGE_SIZE = 10;
   const DEFAULT_PAGE_NUMBER = 1;
   const { searchParams } = new URL(request.url);
-  const page = searchParams.get('_page') || DEFAULT_PAGE_NUMBER
+  const page = searchParams.get('_page')
   const startIndex = (Number(page) - 1) * DEFAULT_PAGE_SIZE
-  const paginatedBooks = [...books].splice(startIndex, DEFAULT_PAGE_SIZE);
-  const totalItems = books.length;
-  console.log(paginatedBooks);
-  console.log(page);
+  const search: string | null = searchParams.get('_search')?? null
+
+  const handleSearch = ()=>{
+    if(search !== null){
+      return books.filter((book)=> book.name.toLowerCase().includes(search.toLowerCase()))
+    }else{
+      return books
+    }
+  }
   
+  
+  const paginatedBooks = page && handleSearch().length > 10
+  ? [...handleSearch()].splice(startIndex, DEFAULT_PAGE_SIZE) 
+  : handleSearch();
   
   const booksData = {
     data: paginatedBooks,
-    total: totalItems,
+    total:handleSearch().length,
     page: page
   }
 

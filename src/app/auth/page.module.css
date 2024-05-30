@@ -1,11 +1,6 @@
-.login_wrapper{
-    max-width: 1100px;
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
- }
- 
- .login{
+
+
+.login{
      width: 500px;
      background: white;
      border: 1px solid gainsboro;
@@ -101,4 +96,36 @@
      .dropdown_login_wrapper{
          margin-top: 340px !important;
      }
+ }
+
+ @media screen and (max-width:625px) {
+    .login{
+        max-width: 400px;
+        padding: 0 15px 0 15px;
+    }
+    
+ }
+
+ @media screen and (max-width:475px) {
+    .login{
+        max-width: 300px;
+        padding: 0 10px 0 10px;
+    }
+    
+ }
+ @media screen and (max-width:350px) {
+    .login{
+        max-width: 200px;
+        padding: 0 10px 0 10px;
+    }
+    .header_text{
+        font-size: 22px;
+    }
+    .login_footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
  }

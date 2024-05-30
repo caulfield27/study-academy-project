@@ -5,13 +5,6 @@
   
 }
 
-.home_wrapper{
-  max-width: 1100px;
-  margin: 0 auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
 .header_text h1{
   font-size: 40px;
   font-weight: 800;
@@ -46,16 +39,6 @@
 
 
 
-@media screen and (max-width:1000px){
-  .home_wrapper{
-      margin-top: 150px;
-  }
-  .dropdown_adaptive{
-      margin-top: 340px !important;
-  }
-  
-}
-
 @media screen and (max-width:1200px) {
   .home_container{
       display: flex;
@@ -64,16 +47,18 @@
 
   .header_text{
       max-width: 700px;
+      padding: 0 25px 0 25px;
   }
   
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:640px) {
   .header_text{
-      max-width: 400px;
+      max-width: 500px;
+      padding: 0 20px 0 20px;
   }
   .header_img img{
-      width: 80%;
+      max-width: 80%;
       margin-top: 50px;
   }
   
