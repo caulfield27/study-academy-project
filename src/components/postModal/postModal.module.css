@@ -80,3 +80,24 @@
     margin-top: -20px;
 
 }
+
+@media screen and (max-width: 600px) {
+    .postModal_content{
+        max-width: 385px;
+    }
+    
+}
+
+@media screen and (max-width: 455px) {
+    .postModal_content{
+        max-width: 285px;
+    }
+    
+}
+
+@media screen and (max-width: 340px) {
+    .postModal_content{
+        max-width: 220px;
+    }
+    
+}

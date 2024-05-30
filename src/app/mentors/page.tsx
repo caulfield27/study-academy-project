@@ -11,7 +11,6 @@ const Mentors = () => {
 
             <Wrapper>
                 <div className={styles.mentors_header}>
-                    <img src='/mentors.jpg' alt="mentors" />
                     <h1>Humo academy mentors</h1>
                 </div>
                 <hr className={styles.hr} />

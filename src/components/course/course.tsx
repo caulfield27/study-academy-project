@@ -8,6 +8,7 @@ import { IFavCourse } from '@/store/courses/coursesTypes'
 import Swal from 'sweetalert2'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Button } from '@mui/material'
+import { useBooks } from '@/store/books/books'
 
 export const Course = ({ course }: { course: coursesType }) => {
     const favoriteCourses = useCourseStore((state) => state.favoriteCourses)
@@ -17,6 +18,8 @@ export const Course = ({ course }: { course: coursesType }) => {
     const setCourseModal = useCourseStore((state) => state.setCourseModal)
     const decrementFavCounter = useCourseStore((state) => state.decrementGFavCounter)
     const incrementFavCounter = useCourseStore((state) => state.incrementFavCounter)
+    let totalNotifications = useBooks((state)=> state.totalNotifications)
+    const setTotalNotifications = useBooks((state)=> state.setTotalNotifications)
     const currentUser = useAuth((state) => state.currentUser)
 
     const handleCourseModal = () => {
@@ -37,6 +40,7 @@ export const Course = ({ course }: { course: coursesType }) => {
                 }
                 if (favCounter !== 0) {
                     decrementFavCounter(favCounter -= 1)
+                    setTotalNotifications(totalNotifications -= 1)
                 }
 
 
@@ -54,6 +58,7 @@ export const Course = ({ course }: { course: coursesType }) => {
                     
                 }
                 incrementFavCounter(favCounter += 1)
+                setTotalNotifications(totalNotifications += 1)
 
 
 

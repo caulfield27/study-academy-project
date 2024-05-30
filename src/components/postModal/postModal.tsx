@@ -47,7 +47,7 @@ const PostModal = () => {
             confirmButtonText: 'ok'
         }).then((result) => {
             if (result.isConfirmed) {
-                // postData(``, postedData)
+                // postData(`${process.env.BASED_URL}`, postedData)
             }
         })
         document.body.classList.remove('open_modal')
@@ -74,8 +74,8 @@ const PostModal = () => {
         <>
             <Button
                 onClick={handlePostModal}
-                variant='outlined'
-                color='success'>
+                variant='contained'
+                color='primary'>
                 ADD YOUR FAVORITE BOOK
             </Button>
             {postModal ?

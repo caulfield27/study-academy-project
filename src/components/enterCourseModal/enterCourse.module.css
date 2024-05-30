@@ -92,3 +92,35 @@
 .display_block{
     display: block;
 }
+
+@media screen and (max-width: 720px) {
+    .courses_modal{
+        max-width: 500px;
+    }
+    .form{
+        max-width: 100%;
+    }
+    .modal_header img{
+        max-width: 90px;
+    }
+
+    
+}
+
+@media screen and (max-width: 610px) {
+    .courses_modal{
+        max-width: 300px;
+        max-height: fit-content;
+    }
+    .modal_header h1{
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 400px) {
+    .courses_modal{
+        max-width: 200px;
+    }
+    
+}

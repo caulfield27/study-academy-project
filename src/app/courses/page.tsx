@@ -1,7 +1,7 @@
 
 import styles from './page.module.css'
 import CourseModal from '@/components/enterCourseModal/enterCourse';
-import {coursesType} from '@/store/courses/coursesTypes';
+import { coursesType } from '@/store/courses/coursesTypes';
 import { Course } from '@/components/course/course';
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { CourseInputs } from '@/components/coursesInputs/courseInputs';
@@ -9,18 +9,19 @@ import { fetchData } from '@/utils/api';
 import { CircularProgress } from '@mui/material';
 
 
-const CoursesCard = async ({searchParams} : {searchParams? : {_search: string}}) => {
-    const data = await fetchData(`${process.env.BASED_URL}/api/courses?_search=${searchParams?._search??''}`)   
-    
+const CoursesCard = async (
+    { searchParams }: { searchParams?: { _search: string, _sort: string } }) => {
+    const data = await fetchData(`${process.env.BASED_URL}/api/courses?_search=${searchParams?._search ?? ''}&_sort=${searchParams?._sort ?? ''}`)
+
     return (
         <>
 
             <CourseModal />
             <Wrapper>
-                <CourseInputs search={searchParams?._search??''}/>
+                <CourseInputs search={searchParams?._search ?? ''} sort={searchParams?._sort ?? ''} />
                 <div className={styles.cards_container}>
-                    {!process.env.BASED_URL ? 
-                        <CircularProgress/> :
+                    {!process.env.BASED_URL ?
+                        <CircularProgress /> :
                         data.map((course: coursesType) =>
                             <Course course={course} key={course.id} />
                         )

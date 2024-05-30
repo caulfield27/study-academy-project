@@ -18,6 +18,8 @@ export const BooksModal = () => {
     let booksNotifications = useBooks((state)=> state.booksNotifications)
     const incrementNot = useBooks((state)=> state.incrementCounter)
     const decrementNot = useBooks((state)=> state.decrementCounter)
+    const setTotalNotifications = useBooks((state)=> state.setTotalNotifications)
+    let totalNotifications = useBooks((state)=> state.totalNotifications)
     const {isAuth, currentUser} = useAuth((state) => state)
     
 
@@ -48,6 +50,7 @@ export const BooksModal = () => {
                 getUserFavorites(filtered)
                 if(booksNotifications !== 0){
                     decrementNot(booksNotifications-=1)
+                    setTotalNotifications(totalNotifications-=1)
                 }
                 if(getFavStorage){
                     const removedBook = getFavStorage.filter((removeBook: IFavBooks)  => removeBook.currentBook.id !== book.id)
@@ -71,6 +74,11 @@ export const BooksModal = () => {
 
                 }
                 incrementNot(booksNotifications+=1)
+                setTotalNotifications(totalNotifications+=1)
+                Swal.fire({
+                    text: 'added to favorite courses',
+                    icon: 'success'
+                })
 
             }
         } else {

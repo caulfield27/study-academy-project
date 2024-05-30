@@ -1,18 +1,50 @@
 .courses_filter{
+    max-width: 100%;
+    max-height: fit-content;
+    padding: 10px 35px 10px 35px;
+    background: gainsboro;
+    border-radius:4px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 35px;
+    gap: 10px;
+}
+
+
+.select{
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 10px;
 }
 
 .courses_filter input{
-    border: 1px solid orangered;
-    border-radius: 12px;
+    width: 300px;
+    border: none;
+    border-radius: 4px;
     padding: 10px;
+    padding-right: 15px;
     outline: none;
 }
 
 .courses_filter input::placeholder{
     font-size: 16px;
+}
+
+
+@media screen and (max-width: 670px) {
+    .courses_filter{
+        background: transparent;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .courses_filter input{
+        border: 1px solid gray;
+    }
+    .select{
+        border: 1px solid gray;
+    }
+    
 }

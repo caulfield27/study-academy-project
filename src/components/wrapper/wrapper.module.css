@@ -37,3 +37,24 @@
     }
 }
 
+@media screen and (max-width:785px) {
+    .wrapper{
+        max-width: 650px;
+    }
+   
+}
+
+@media screen and (max-width:670px) {
+    .wrapper{
+        max-width: 470px;
+    }
+   
+}
+@media screen and (max-width:490px) {
+    .wrapper{
+        max-width: 350px;
+    }
+   
+}
+
+

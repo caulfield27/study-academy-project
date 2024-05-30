@@ -156,18 +156,25 @@
     }
 
     .right_wrap {
-        margin-top: 20px; /* Add spacing between left and right content */
+        margin-top: 20px;
     }
 
     .head,
     .second {
-        font-size: 16px; /* Adjust font size for readability */
+        font-size: 16px; 
     }
 }
 
-/* Adjust styles for larger screens */
 @media only screen and (min-width: 1200px) {
     .modal_content {
-        max-width: 600px; /* Increase max-width for larger screens */
+        max-width: 600px; 
     }
+}
+
+@media screen and (max-width: 775px) {
+    .modal_content{
+        max-height: fit-content;    
+        margin-top: 220px;
+    }
+    
 }

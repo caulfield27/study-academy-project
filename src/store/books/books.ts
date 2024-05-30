@@ -15,7 +15,8 @@ type Actions = {
     decrementCounter: (payload: number)=> void,
     getBooksCounter: (payload:number)=> void,
     resetNotifications: (payload: number)=> void,
-    setPostModal: (payload: boolean) => void
+    setPostModal: (payload: boolean) => void,
+    setTotalNotifications: (payload: number) => void
 
 }
 
@@ -26,6 +27,7 @@ export const useBooks = create<IStates & Actions>()(devtools((set)=> ({
     currentBook:{name:'',author:'',image:'',pdf:'',rating:0,released:'',description:'',id:0},
     favorites: [],
     booksNotifications: 0,
+    totalNotifications: 0,
     setBooksModal: (payload) => set(()=> ({booksModal: payload})),
     setPostModal: (payload) => set(()=> ({postModal: payload})),
     setCurrentBook: (payload) => set(()=> ({currentBook: payload})),
@@ -44,7 +46,8 @@ export const useBooks = create<IStates & Actions>()(devtools((set)=> ({
     resetNotifications: (payload)=>{
         setToStorage<number>('favBooksCounter', payload);
         set(()=> ({booksNotifications: payload}))
-    }
+    },
+    setTotalNotifications: (payload)=> set(()=>({totalNotifications:payload}))
 })))
 
 

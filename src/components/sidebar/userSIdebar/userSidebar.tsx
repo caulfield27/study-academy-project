@@ -27,11 +27,15 @@ const LogedSidebar = () => {
     const [currentUser, setCurrentUser] = useState<IUserItem[]>();
     const navigate = useRouter()
     const favCounter = useCourseStore((state)=> state.favCounter)
+    const booksNotifications = useBooks((state)=> state.booksNotifications)
+    let totalNotifications = useBooks((state)=> state.totalNotifications)
+    const setTotalNotifications = useBooks((state)=> state.setTotalNotifications)
     const resetFavCounter = useCourseStore((state)=> state.resetFavCounter)
     const {favoriteCourses, resetCourses} = useCourseStore()
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const pathname = usePathname()
+    const isAuth = useAuth((state)=> state.isAuth)
 
 
     useEffect(() => {
@@ -41,6 +45,7 @@ const LogedSidebar = () => {
 
     const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
+        setTotalNotifications(0)
     };
 
     const handleLogOut = () => {
@@ -75,7 +80,8 @@ const LogedSidebar = () => {
         navigate.push('/settings')
     }
 
-
+    console.log(isAuth);
+    
 
     return (
         <>
@@ -98,7 +104,8 @@ const LogedSidebar = () => {
                         <img src='/humoLogo.png' />
                         <h3>Humo Academy</h3>
                     </div>
-                    <div className={styles.dropdown_btn} onClick={() => { setDropdown(true) }}>
+                    <div className={isAuth ? styles.dropdown_btn : styles.quest_dropdown_btn} 
+                    onClick={() => { setDropdown(true) }}>
                         &#9776; Menu
                     </div>
 
@@ -125,9 +132,9 @@ const LogedSidebar = () => {
                         aria-expanded={open ? 'true' : undefined}
                     >
                         <Avatar sx={{ width: 32, height: 32 }}>{currentUser !== undefined ? currentUser[0].userName[0].toUpperCase() : ''}</Avatar>
-                        <div className={favCounter > 0 ? styles.indicator : styles.indicatorDisplayNone}>
-                            <span className={favCounter > 0 ? styles.indicator_count : styles.indicatorCountNone}>
-                                {favCounter}
+                        <div className={totalNotifications > 0 ? styles.indicator : styles.indicatorDisplayNone}>
+                            <span className={totalNotifications > 0 ? styles.indicator_count : styles.indicatorCountNone}>
+                                {totalNotifications}
                             </span>
                         </div>
                     </IconButton>
@@ -188,6 +195,11 @@ const LogedSidebar = () => {
                                 <LocalLibraryIcon fontSize="small" />
                             </ListItemIcon>
                             My favorite books
+                            <div className={booksNotifications > 0 ? styles.indicator : styles.indicatorDisplayNone}>
+                                <span className={booksNotifications > 0 ? styles.indicator_count : styles.indicatorCountNone}>
+                                    {booksNotifications}
+                                </span>
+                            </div>
                         </MenuItem>
                         <MenuItem onClick={handleSettings}>
 

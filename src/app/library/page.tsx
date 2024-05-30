@@ -8,6 +8,8 @@ import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { fetchData } from '@/utils/api';
 import { CircularProgress, circularProgressClasses } from '@mui/material';
+import BooksSearch from '@/components/libraryHeader/libraryHeader';
+import BooksPagination from '@/components/pagination/Pagination';
 
 
 const Library = async (
@@ -24,7 +26,7 @@ const Library = async (
 
                 </div>
                 <div className={styles.header_container}>
-                    <LibraryHeader pages={data.total} currentPage={searchParams?._page} search={searchParams?._search??''}/>
+                    <BooksSearch search={searchParams?._search??''}/>
                     <PostModal/>
                 </div>
 
@@ -35,11 +37,8 @@ const Library = async (
                             return <Book book={book} key={book.id} />
                         })
                     }
-
-                    
-
-
                 </div>
+                <BooksPagination pages={data.total} currentPage={searchParams?._page}/>
 
             </Wrapper>
 

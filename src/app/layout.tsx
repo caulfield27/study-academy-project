@@ -9,12 +9,13 @@ import { useEffect } from "react";
 import { setUserFavBooks } from "@/store/books/books";
 import { getFromStorage } from "@/utils/useLocaleStorage";
 import { setUserFavCourse } from "@/store/courses/courses";
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
 
   const isAuth = useAuth((state) => state.isAuth)
   const { getUserFavorites } = useBooks()

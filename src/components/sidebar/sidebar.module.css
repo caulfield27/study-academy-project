@@ -58,6 +58,11 @@
     position: fixed;
     bottom: 0;
     margin-bottom: 30px;
+
+}
+
+.display_none{
+    display: none;
 }
 
 .user_account{
@@ -95,6 +100,10 @@
 }
 
 .dropdown_btn{
+    display: none;
+}
+
+.quest_dropdown_btn{
     display: none;
 }
 
@@ -203,8 +212,13 @@
     }
     .dropdown_btn{
         display: block;
-        margin-right: 50px;
         cursor: pointer;
+        margin-right: 90px;
+    }
+    .quest_dropdown_btn{
+        display: block;
+        cursor: pointer;
+        margin-right: 50px;
     }
     .sidebar_header{
         width: 100%;
