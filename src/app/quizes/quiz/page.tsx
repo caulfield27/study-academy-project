@@ -2,13 +2,14 @@
 import styles from './page.module.css'
 import { RadioGroup, FormControlLabel, Radio, Button } from '@mui/material'
 import CircularWithValueLabel from '@/components/progressBar/progress'
-import { useBooks } from '@/store/books/books'
 import { useQuizes } from '@/store/quizes/quizes'
 import QuizInfo from '@/components/quizInfo/quizInfo'
 import Result from '@/components/result/result'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getFromStorage } from '@/utils/useLocaleStorage'
 import { Wrapper } from '@/components/wrapper/wrapper'
+import { Timer } from '@/components/timer/Times'
+
 
 
 
@@ -19,14 +20,42 @@ const Quiz = () => {
     const nextQuestion = useQuizes((state) => state.nextQuestion)
     const result = useQuizes((state) => state.result)
     const setQuestions = useQuizes((state) => state.setQuestions)
-    const dropdown = useBooks((state) => state.dropdown)
+    let quizMinutes = useQuizes((state)=> state.quizMinutes)
+    let quizSeconds = useQuizes((state)=> state.seconds)
+    const setSeconds = useQuizes((state)=> state.setSeconds)
+    const setMinutes = useQuizes((state)=> state.setMinutes)
+    const resetQuiz = useQuizes((state)=> state.resetQuiz)
+    // let [seconds, setSeconds] = useState(59)
+    // let [minutes, setMinutes] = useState(5)
+    
     let currentQuestion = useQuizes((state) => state.questions[currentQuestionIndex])
-
 
 
     useEffect(() => {
         setQuestions(getFromStorage('questions'))
-    }, [])
+        const interval = setInterval(()=>{
+
+            setSeconds(quizSeconds > 0 ? quizSeconds-=1 : quizSeconds)
+            if(quizSeconds === 0 && quizMinutes > 0){
+                setMinutes(quizMinutes-=1)
+                setSeconds(59)
+            }
+            console.log(currentQuestionIndex);
+                
+            if(quizSeconds === 0 && quizMinutes === 0 || currentQuestionIndex > 9){
+                console.log(currentQuestionIndex);
+                
+                clearInterval(interval)
+                // resetQuiz()
+
+            }
+        }, 1000)
+        return ()=> clearInterval(interval)
+    }, [quizMinutes, currentQuestionIndex])
+
+   
+    
+
 
 
     const handleCheckboxChange = (event: any) => {
@@ -35,6 +64,7 @@ const Quiz = () => {
 
     const handleNextQuestion = () => {
         nextQuestion()
+        
     }
 
     if (currentQuestionIndex > 9) {
@@ -57,6 +87,7 @@ const Quiz = () => {
                                 <div className={styles.question}>
                                     <span className={styles.q}>Question:</span><span className={styles.id}>{currentQuestion.id}</span><span className={styles.length}> | {questions.length}</span>
                                 </div>
+                                <Timer minutes={quizMinutes} seconds={quizSeconds}/>
                                 <CircularWithValueLabel progress={result} />
                             </div>
                             <div>

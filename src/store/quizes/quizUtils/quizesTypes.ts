@@ -20,6 +20,9 @@ export interface IQuizState{
     currentQuestionIndex: number,
     currentQuiz: number,
     result: number,
-    quizModal: boolean
+    quizModal: boolean,
+    quizDuration: number,
+    seconds: number,
+    quizMinutes: number
 
 }

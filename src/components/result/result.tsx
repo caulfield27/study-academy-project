@@ -14,7 +14,9 @@ const Result = () => {
     const dropdown = useBooks((state)=> state.dropdown)
     const {resetQuiz, questions, result, currentQuiz, setQuizModal
     } = useQuizes()
-    
+    const minutes = useQuizes((state)=> state.quizMinutes)
+    const seconds = useQuizes((state)=> state.seconds)
+    const duration = useQuizes((state)=> state.quizDuration)
     
     const handleReset =  ()=>{
         resetQuiz()
@@ -45,6 +47,9 @@ const Result = () => {
                 <div className={styles.completed_result}>
                     <h1>Quiz completed! Your final result</h1>
                     <span className={styles.final_result}>{`${result} of ${maxPoint} points`}</span>
+                    <div>
+                        <span>Time spend: </span><span>{(duration - 1)-minutes}</span> : <span>{60-seconds}</span>
+                    </div>
                     <CircularWithValueLabel progress={result} />
                     <div className={styles.complete_button_wrap}>
                         <Button variant="contained" color="success" onClick={() => setQuizModal(true)}>

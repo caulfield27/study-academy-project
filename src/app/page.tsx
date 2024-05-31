@@ -9,8 +9,6 @@ import { Wrapper } from '@/components/wrapper/wrapper'
 
 const Home = ()=>{
     const navigate = useRouter()
-    const dropdown = useBooks((state)=> state.dropdown)
-
     
 
     return (

@@ -38,11 +38,7 @@ export default useAuth
 
 export const handleLogin = (email: string, password: string,
     navigate: any, users: IUserItem[], setAuth: Function, setCurrentUser: Function) => {
-    console.log(users);
-
-    // const loggedInUser = users === undefined ? [] : users.filter((user:IUserItem)=>{
-    //     return user.userEmail === email && user.userPassword === password
-    // }) 
+        
     let loggedInUser: IUserItem[] = []
     if (users) {
         users.forEach((user) => {

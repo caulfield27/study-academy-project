@@ -80,9 +80,6 @@ const LogedSidebar = () => {
         navigate.push('/settings')
     }
 
-    console.log(isAuth);
-    
-
     return (
         <>
             <div className={styles.sidebar_container}>

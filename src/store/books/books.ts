@@ -20,7 +20,7 @@ type Actions = {
 
 }
 
-export const useBooks = create<IStates & Actions>()(devtools((set)=> ({
+export const useBooks = create<IStates & Actions>()((set)=> ({
     booksModal: false,
     postModal: false,
     dropdown: false,
@@ -48,7 +48,7 @@ export const useBooks = create<IStates & Actions>()(devtools((set)=> ({
         set(()=> ({booksNotifications: payload}))
     },
     setTotalNotifications: (payload)=> set(()=>({totalNotifications:payload}))
-})))
+}))
 
 
 
