@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { IFavBooks, IStates, books } from "./booksTypes";
 import { IUserItem } from "../auth/auth";
 import { setToStorage } from "@/utils/useLocaleStorage";
-import { devtools } from "zustand/middleware";
 
 
 type Actions = {
@@ -20,7 +19,7 @@ type Actions = {
 
 }
 
-export const useBooks = create<IStates & Actions>()((set)=> ({
+export const useBooks = create<IStates & Actions>((set)=> ({
     booksModal: false,
     postModal: false,
     dropdown: false,

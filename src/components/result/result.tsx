@@ -3,8 +3,6 @@ import ResultModal from './resultModal/resultModal';
 import { Button, Rating } from "@mui/material";
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import CircularWithValueLabel from '../progressBar/progress';
-import { quizTypes } from '@/store/quizes/quizUtils/quizesTypes';
-import { FunctionComponent } from 'react';
 import { useBooks } from '@/store/books/books';
 import { useQuizes } from '@/store/quizes/quizes';
 import { quizes } from '@/store/quizes/quizUtils/questions';
@@ -27,6 +25,7 @@ const Result = () => {
         maxPoint += 10
     }
 
+
     return( 
         <>
             <ResultModal />
@@ -47,9 +46,9 @@ const Result = () => {
                 <div className={styles.completed_result}>
                     <h1>Quiz completed! Your final result</h1>
                     <span className={styles.final_result}>{`${result} of ${maxPoint} points`}</span>
-                    <div>
+                    {/* <div>
                         <span>Time spend: </span><span>{(duration - 1)-minutes}</span> : <span>{60-seconds}</span>
-                    </div>
+                    </div> */}
                     <CircularWithValueLabel progress={result} />
                     <div className={styles.complete_button_wrap}>
                         <Button variant="contained" color="success" onClick={() => setQuizModal(true)}>

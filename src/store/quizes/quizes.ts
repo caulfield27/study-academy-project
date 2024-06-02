@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { IGlobalQuestions, IQuizState } from "./quizUtils/quizesTypes";
+import { IGlobalQuestions, IQuizState, quizTypes } from "./quizUtils/quizesTypes";
 import { devtools } from "zustand/middleware";
 
 interface Actions {
@@ -36,7 +36,7 @@ export const useQuizes = create<IQuizState & Actions>()(devtools(immer((set) => 
     resetQuiz: () => set((state) => {
         state.currentQuestionIndex = 0;
         state.result = 0;
-        state.questions.forEach((question) => {
+        state.questions.forEach((question:quizTypes) => {
             question.selected = null;
             question.isCorrect = false;
         });

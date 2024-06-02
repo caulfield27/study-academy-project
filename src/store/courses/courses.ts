@@ -50,7 +50,8 @@ export const useCourseStore = create<ICourses & Actions>((set)=>({
 
 }))
 
-export const setUserFavCourse = (favCourses:IFavCourse[], currentUser:IUserItem[], getUserCourses:Function)=>{
+export const setUserFavCourse = (favCourses:IFavCourse[], 
+    currentUser:IUserItem[], getUserCourses:Function)=>{
     const  customFav = favCourses ? favCourses.filter(course => course.userToken === currentUser[0].userToken) : []
     getUserCourses(customFav)
 }

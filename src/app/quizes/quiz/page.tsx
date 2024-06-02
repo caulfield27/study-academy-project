@@ -10,9 +10,6 @@ import { getFromStorage } from '@/utils/useLocaleStorage'
 import { Wrapper } from '@/components/wrapper/wrapper'
 import { Timer } from '@/components/timer/Times'
 
-
-
-
 const Quiz = () => {
     const questions = useQuizes((state) => state.questions)
     const currentQuestionIndex = useQuizes((state) => state.currentQuestionIndex)
@@ -24,10 +21,6 @@ const Quiz = () => {
     let quizSeconds = useQuizes((state)=> state.seconds)
     const setSeconds = useQuizes((state)=> state.setSeconds)
     const setMinutes = useQuizes((state)=> state.setMinutes)
-    const resetQuiz = useQuizes((state)=> state.resetQuiz)
-    // let [seconds, setSeconds] = useState(59)
-    // let [minutes, setMinutes] = useState(5)
-    
     let currentQuestion = useQuizes((state) => state.questions[currentQuestionIndex])
 
 
@@ -40,23 +33,14 @@ const Quiz = () => {
                 setMinutes(quizMinutes-=1)
                 setSeconds(59)
             }
-            console.log(currentQuestionIndex);
                 
             if(quizSeconds === 0 && quizMinutes === 0 || currentQuestionIndex > 9){
-                console.log(currentQuestionIndex);
-                
                 clearInterval(interval)
-                // resetQuiz()
 
             }
         }, 1000)
         return ()=> clearInterval(interval)
     }, [quizMinutes, currentQuestionIndex])
-
-   
-    
-
-
 
     const handleCheckboxChange = (event: any) => {
         selectOption(event.target.value)
@@ -67,7 +51,7 @@ const Quiz = () => {
         
     }
 
-    if (currentQuestionIndex > 9) {
+    if (currentQuestionIndex > 9 || quizMinutes === 0) {
         return (
             <>
                 <Result />
