@@ -18,17 +18,6 @@ const Library = async (
 
     const data = await fetchData(`${process.env.BASED_URL}/api/books?_page=${searchParams?._page ?? '1'}&_search=${searchParams?._search ?? ''}`)
     
-    // if(!process.env.BASED_URL){
-    //     return (
-    //         <CircularProgress style={{
-    //             position:'absolute',
-    //             top: '50%',
-    //             left: '50%',
-    //             transform: 'translate(-50%,-50%)'
-
-    //         }}/>
-    //     )
-    // }
     return (
         <>
             <BooksModal />
@@ -41,9 +30,12 @@ const Library = async (
                     <BooksSearch search={searchParams?._search ?? ''} />
                     <PostModal />
                 </div>
-
+                
                 <div className={styles.library_container}>
-                    {data.data.map((book: books) => {
+
+                    {!process.env.BASED_URL ? 
+                    <CircularProgress/> :
+                    data.data.map((book: books) => {
                         return <Book book={book} key={book.id} />
                     })}
 

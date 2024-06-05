@@ -1,8 +1,10 @@
+
+
 .sidebar_container{
     position: fixed;
     height: 100%;
     width: 250px;
-    background: #F2613F;
+    background: var(--primaryMainColor);
     padding: 20px;
     z-index: 1;
     box-shadow: 6px 0px 18px 4px rgba(0,0,0,0.1);

@@ -1,3 +1,4 @@
+import '../../../app/globals.css'
 import styles from '../sidebar.module.css'
 import { navLinks } from './questRoutes';
 import HomeIcon from '@mui/icons-material/Home';
@@ -9,16 +10,22 @@ import LoginIcon from '@mui/icons-material/Login';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useBooks } from '@/store/books/books';
+import { useTheme } from '@/store/global/theme';
+import { setToStorage } from '@/utils/useLocaleStorage';
 
 
 const QuestSidebar = () => {
     const icons = [{logo: <HomeIcon/>},{logo: <LocalLibraryIcon/>},{logo:<QuizIcon/>},
     {logo: <SchoolIcon/>},{logo: <PersonIcon/>},{logo:<LoginIcon/>}]
-    const router = useRouter()
     const {dropdown, setDropdown} = useBooks((state)=> state)
     const currentPage = usePathname()
+    const toggleTheme = useTheme((state)=> state.toggleTheme)
+    const theme = useTheme((state)=> state.theme)
     
-
+    const handleTheme = ()=>{
+        toggleTheme()
+        setToStorage('theme', theme ? 'light' : 'dark')
+    }
     
     return (
         <>  
@@ -60,6 +67,8 @@ const QuestSidebar = () => {
                     
                     })}
                 </div>
+
+                <button onClick={handleTheme}>change theme</button>
             </div>
         </>
      );

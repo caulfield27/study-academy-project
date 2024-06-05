@@ -77,8 +77,14 @@ export const BooksModal = () => {
                 setTotalNotifications(totalNotifications+=1)
                 Swal.fire({
                     text: 'added to favorite courses',
-                    icon: 'success'
+                    icon: 'success',
+                    confirmButtonText: 'ok'
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        setBooksModal(false)
+                    }
                 })
+                
 
             }
         } else {

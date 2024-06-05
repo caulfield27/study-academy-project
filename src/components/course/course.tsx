@@ -1,4 +1,5 @@
 "use client"
+import '../../app/globals.css'
 import styles from './course.module.css'
 import { getFromStorage, setToStorage } from '@/utils/useLocaleStorage'
 import { coursesType } from '@/store/courses/coursesTypes'
@@ -9,6 +10,7 @@ import Swal from 'sweetalert2'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Button } from '@mui/material'
 import { useBooks } from '@/store/books/books'
+import { useTheme } from '@/store/global/theme'
 
 export const Course = ({ course }: { course: coursesType }) => {
     const favoriteCourses = useCourseStore((state) => state.favoriteCourses)
@@ -21,6 +23,7 @@ export const Course = ({ course }: { course: coursesType }) => {
     let totalNotifications = useBooks((state)=> state.totalNotifications)
     const setTotalNotifications = useBooks((state)=> state.setTotalNotifications)
     const currentUser = useAuth((state) => state.currentUser)
+    const theme = useTheme((state)=> state.theme)
 
     const handleCourseModal = () => {
         setCourseModal(true)
@@ -94,7 +97,11 @@ export const Course = ({ course }: { course: coursesType }) => {
                         <p>You will learn &darr;</p>
                         <div className={styles.language_img}>
                             {course.languages.map((language, id) =>
-                                <img src={language} alt="altf4" key={id + 1} />
+                                <div style={{padding:'4px', borderRadius:'50%', background:'white',
+                                    display: 'flex', justifyContent:'center', alignItems:'center'
+                                }} key={id + 1}>
+                                    <img src={language} alt="altf4" />
+                                </div>
                             )}
                         </div>
                     </div>
@@ -105,8 +112,8 @@ export const Course = ({ course }: { course: coursesType }) => {
                 <div className={styles.card_right}>
                     <img src={course.image} alt="" />
                     <div className={styles.card_buttons}>
-                        <Button variant='outlined'
-                            color='secondary'
+                        <Button variant='contained'
+                            color={!theme ? 'success' : 'secondary'}
                             onClick={handleCourseModal}
                         >sign up</Button>
                     </div>

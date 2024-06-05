@@ -34,13 +34,13 @@ const Quiz = () => {
                 setSeconds(59)
             }
                 
-            if(quizSeconds === 0 && quizMinutes === 0 || currentQuestionIndex > 9){
+            if(quizSeconds === 0 && quizMinutes === 0){
                 clearInterval(interval)
 
             }
         }, 1000)
         return ()=> clearInterval(interval)
-    }, [quizMinutes, currentQuestionIndex])
+    }, [quizMinutes])
 
     const handleCheckboxChange = (event: any) => {
         selectOption(event.target.value)
@@ -51,7 +51,7 @@ const Quiz = () => {
         
     }
 
-    if (currentQuestionIndex > 9 || quizMinutes === 0) {
+    if (currentQuestionIndex > 9) {
         return (
             <>
                 <Result />

@@ -5,10 +5,11 @@ import Sidebar from "@/components/sidebar/sidebar";
 import useAuth from "@/store/auth/auth";
 import { useBooks } from "@/store/books/books";
 import { useCourseStore } from "@/store/courses/courses";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setUserFavBooks } from "@/store/books/books";
 import { getFromStorage } from "@/utils/useLocaleStorage";
 import { setUserFavCourse } from "@/store/courses/courses";
+import { useTheme } from "@/store/global/theme";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,7 +24,10 @@ export default function RootLayout({
   const currentUser = useAuth((state) => state.currentUser)
   const getCounter = useCourseStore((state) => state.getCounter)
   const getBooksCounter = useBooks((state) => state.getBooksCounter)
-  const courseNot = useCourseStore((state) => state.favCounter)
+  const theme = useTheme((state)=> state.theme)
+  const setTheme = useTheme((state)=> state.setTheme)
+
+
 
   useEffect(() => {
     if (isAuth) {
@@ -40,11 +44,17 @@ export default function RootLayout({
     if (getFromStorage('favBooksCounter')) {
       getBooksCounter(getFromStorage('favBooksCounter'))
     }
+    let theme = getFromStorage('theme')
+    if(theme === 'light'){
+      setTheme(false)
+    }else{
+      setTheme(true)
+    }
   }, [])
 
   return (
     <html lang="en">
-      <body>
+      <body className={getFromStorage('theme') === 'light' ? 'light' : 'dark'}>
         <div className='app-container'>
           <Sidebar />
           <div className="pages-content">
