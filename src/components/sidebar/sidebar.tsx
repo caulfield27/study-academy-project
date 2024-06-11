@@ -10,13 +10,8 @@ const Sidebar = () => {
 
     useEffect(()=>{
         const logedUSer = getFromStorage('loggedInUser')
-        if(logedUSer){
-            checkIsAuth(Boolean(logedUSer))
-            setCurrentUser(JSON.parse(logedUSer))
-        }
-        
-        
-        
+        checkIsAuth(Boolean(logedUSer))
+        setCurrentUser(logedUSer)
     },[isAuth])
 
 
