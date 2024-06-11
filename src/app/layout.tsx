@@ -44,12 +44,16 @@ export default function RootLayout({
     if (getFromStorage('favBooksCounter')) {
       getBooksCounter(getFromStorage('favBooksCounter'))
     }
-    let theme = getFromStorage('theme')
-    if(theme === 'light'){
-      setTheme(false)
-    }else{
-      setTheme(true)
+    if(getFromStorage('theme')){
+      if(getFromStorage('theme') === 'light'){
+        setTheme(false)
+      }else{
+        setTheme(true)
+      }
+  
     }
+   
+    
   }, [])
 
   return (
