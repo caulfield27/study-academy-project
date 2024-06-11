@@ -1,3 +1,4 @@
+import '../../app/globals.css'
 import styles from './result.module.css'
 import ResultModal from './resultModal/resultModal';
 import { Button, Rating } from "@mui/material";

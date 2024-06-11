@@ -1,8 +1,10 @@
 "use client"
+import '../../app/globals.css'
 import { books } from "@/store/books/booksTypes"
 import styles from './book.module.css'
 import { Button } from "@mui/material"
 import { useBooks } from "@/store/books/books"
+import { useTheme } from '@/store/global/theme'
 
 
 export const Book = ({ book }: { book: books, }) => {
@@ -10,6 +12,7 @@ export const Book = ({ book }: { book: books, }) => {
     const setCurrentBook = useBooks((state) => state.setCurrentBook)
     const booksModal = useBooks((state) => state.booksModal)
     const setBooksModal = useBooks((state) => state.setBooksModal)
+    const theme = useTheme((state)=> state.theme)
 
     function handleRead(e: any) {
         window.open(e.target.value, '_blank')
@@ -37,13 +40,13 @@ export const Book = ({ book }: { book: books, }) => {
                         <Button
                             value={book.pdf}
                             onClick={handleRead}
-                            variant='outlined'
+                            variant={!theme ? `outlined` : 'contained'}
                             color='success'>
                             read
                         </Button>
                         <Button
                             onClick={() => handleModal(book)}
-                            variant='outlined'
+                            variant={!theme ? `outlined` : 'contained'}
                             color='primary'>
                             show more
                         </Button>

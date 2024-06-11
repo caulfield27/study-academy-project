@@ -1,4 +1,5 @@
 "use client"
+import '../../app/globals.css'
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation';
 import { Button, Rating } from '@mui/material';
@@ -9,8 +10,7 @@ import { useQuizes } from '@/store/quizes/quizes';
 import { setToStorage } from '@/utils/useLocaleStorage';
 import { Wrapper } from '@/components/wrapper/wrapper';
 import AvTimerIcon from '@mui/icons-material/AvTimer';
-import { useState } from 'react';
-import { log } from 'console';
+import { useTheme } from '@/store/global/theme';
 
 
 
@@ -19,7 +19,7 @@ const Quizes = () => {
     const navigate = useRouter()
     const setQuestions = useQuizes((state) => state.setQuestions)
     const resetQuiz = useQuizes((state) => state.resetQuiz)
-    let quizDuration = useQuizes((state)=> state.quizDuration)
+    const theme = useTheme((state)=> state.theme)
 
     const OpenQuiz = (quiz: IGlobalQuestions) => {
         navigate.push('/quizes/quiz')
@@ -43,14 +43,14 @@ const Quizes = () => {
                             <Rating className={styles.raiting} name="quiz-complex" value={quiz.complexity} precision={0.5} readOnly />
                             <div style={{display:'flex', flexDirection:'row', 
                             justifyContent:'center', alignContent:'center', gap:'5px',}}>
-                                <AvTimerIcon style={{color:'black'}}/>
+                                <AvTimerIcon style={theme ? {color:'white'} : {color: 'black'}}/>
                                 <span style={{display:'flex', justifyContent:'center',alignItems:'center'}}>
                                     5 min
                                 </span>
                             </div>
                             <Button
                             onClick={()=> OpenQuiz(quiz)}
-                            variant='outlined'
+                            variant={theme ? 'contained' : 'outlined'}
                             color='primary'>
                             start
                         </Button>

@@ -1,4 +1,5 @@
 "use client"
+import '../../app/globals.css'
 import styles from '../../app/auth/page.module.css'
 import { useState } from 'react';
 import { IUserItem, handleSignup } from '@/store/auth/auth';

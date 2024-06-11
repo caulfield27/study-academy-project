@@ -12,6 +12,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useBooks } from '@/store/books/books';
 import { useTheme } from '@/store/global/theme';
 import { setToStorage } from '@/utils/useLocaleStorage';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
+
 
 
 const QuestSidebar = () => {
@@ -68,7 +71,12 @@ const QuestSidebar = () => {
                     })}
                 </div>
 
-                <button onClick={handleTheme}>change theme</button>
+                    <button className={!theme ? `${styles.theme_btn}` : `${styles.theme_btn} ${styles.theme_active}`} onClick={handleTheme}>
+                        <img className={styles.theme_icon} src="/sun.png" alt="sun" />
+                        <img className={styles.theme_icon} src="/moon.png" alt="moon" />
+                    </button>
+                
+                
             </div>
         </>
      );

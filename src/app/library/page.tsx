@@ -1,9 +1,8 @@
-
+import '../../app/globals.css'
 import styles from './page.module.css'
 import { books } from "@/store/books/booksTypes";
 import BooksModal from "@/components/booksModal/booksModal";
 import PostModal from "@/components/postModal/postModal";
-import LibraryHeader from "@/components/libraryHeader/libraryHeader";
 import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { fetchData } from '@/utils/api';

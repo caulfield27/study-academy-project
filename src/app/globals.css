@@ -5,11 +5,15 @@
     --textColor: black;
     --primaryMainColor: #F2613F;
     --primaryAccentColor: #fdc830;
-    --cardBg:#F2613F;
     --mentorColor: rgb(143, 142, 142);
+    --libraryHeaderBg:gainsboro;
+    --booksCardBg: rgb(48, 48, 48);
+    --spanText: white;
+    --resultCOlor: #F2613F;
 }
 
-h2{
+
+h2, h1{
     color: var(--textColor) !important;
 }
 
@@ -20,16 +24,23 @@ h2{
     --primaryAccentColor: #fdc830;
     --cardBg:white;
     --mentorColor:rgb(143, 142, 142);
-    
+    --libraryHeaderBg:gainsboro;
+    --booksCardBg: whitesmoke;
+    --spanText:black;
+    --resultCOlor: #F2613F;
 }
 
 .dark {
-    --bgColor: #9ab4e4;
-    --textColor: white;
-    --primaryMainColor: #363795;
+    --spanText:white;
+    --bgColor: #121212;
+    --textColor: rgb(204, 204, 204);
+    --primaryMainColor: #121212;
     --primaryAccentColor: #005c97;
     --cardBg:#F2613F;
     --mentorColor: white;
+    --libraryHeaderBg: rgb(48, 48, 48);
+    --booksCardBg: rgb(48, 48, 48);
+    --resultCOlor: white;
     
 }
 

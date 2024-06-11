@@ -37,7 +37,7 @@
 .final_result{
     font-size: 20px;
     font-weight: 500;
-    color: orangered;
+    color: var(--resultColor);
 }
 
 .complete_button_wrap{
@@ -77,7 +77,7 @@
 }
 .name{
     font-weight: 600;
-    color: black !important;
+    color: var(--spanText);
 }
 
 .complex{

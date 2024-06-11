@@ -5,7 +5,7 @@ import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import QuizIcon from '@mui/icons-material/Quiz';
 import SchoolIcon from '@mui/icons-material/School';
 import PersonIcon from '@mui/icons-material/Person';
-import useAuth, {IUserItem} from '@/store/auth/auth';
+import useAuth, { IUserItem } from '@/store/auth/auth';
 import LoginIcon from '@mui/icons-material/Login';
 import { useBooks } from '@/store/books/books';
 import { Avatar, IconButton, Menu, MenuItem, Divider, ListItemIcon } from '@mui/material';
@@ -16,32 +16,42 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Settings } from '@mui/icons-material';
 import Link from 'next/link';
 import { useCourseStore } from '@/store/courses/courses';
+import { useTheme } from '@/store/global/theme';
+import { setToStorage } from '@/utils/useLocaleStorage';
 
 
 
 const LogedSidebar = () => {
-    const icons = [{logo: <HomeIcon/>},{logo: <LocalLibraryIcon/>},{logo:<QuizIcon/>},
-    {logo: <SchoolIcon/>},{logo: <PersonIcon/>},{logo:<LoginIcon/>}]
-    const {dropdown, setDropdown, resetFavBooks} = useBooks((state) => state)
-    const logOut = useAuth((state)=> state.logOut)
+    const icons = [{ logo: <HomeIcon /> }, { logo: <LocalLibraryIcon /> }, { logo: <QuizIcon /> },
+    { logo: <SchoolIcon /> }, { logo: <PersonIcon /> }, { logo: <LoginIcon /> }]
+    const { dropdown, setDropdown, resetFavBooks } = useBooks((state) => state)
+    const logOut = useAuth((state) => state.logOut)
     const [currentUser, setCurrentUser] = useState<IUserItem[]>();
     const navigate = useRouter()
-    const favCounter = useCourseStore((state)=> state.favCounter)
-    const booksNotifications = useBooks((state)=> state.booksNotifications)
-    let totalNotifications = useBooks((state)=> state.totalNotifications)
-    const setTotalNotifications = useBooks((state)=> state.setTotalNotifications)
-    const resetFavCounter = useCourseStore((state)=> state.resetFavCounter)
-    const {favoriteCourses, resetCourses} = useCourseStore()
+    const favCounter = useCourseStore((state) => state.favCounter)
+    const booksNotifications = useBooks((state) => state.booksNotifications)
+    let totalNotifications = useBooks((state) => state.totalNotifications)
+    const setTotalNotifications = useBooks((state) => state.setTotalNotifications)
+    const resetFavCounter = useCourseStore((state) => state.resetFavCounter)
+    const { favoriteCourses, resetCourses } = useCourseStore()
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const pathname = usePathname()
-    const isAuth = useAuth((state)=> state.isAuth)
+    const isAuth = useAuth((state) => state.isAuth)
+    const theme = useTheme((state) => state.theme)
+    const setTheme = useTheme((state) => state.setTheme)
+    const toggleTheme = useTheme((state)=> state.toggleTheme)
 
 
     useEffect(() => {
         setCurrentUser(JSON.parse(String(localStorage.getItem("loggedInUser"))))
-        
+
     }, [])
+
+    const handleTheme = ()=>{
+        toggleTheme()
+        setToStorage('theme', theme ? 'light' : 'dark')
+    }
 
     const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
@@ -101,8 +111,8 @@ const LogedSidebar = () => {
                         <img src='/humoLogo.png' />
                         <h3>Humo Academy</h3>
                     </div>
-                    <div className={isAuth ? styles.dropdown_btn : styles.quest_dropdown_btn} 
-                    onClick={() => { setDropdown(true) }}>
+                    <div className={isAuth ? styles.dropdown_btn : styles.quest_dropdown_btn}
+                        onClick={() => { setDropdown(true) }}>
                         &#9776; Menu
                     </div>
 
@@ -118,6 +128,11 @@ const LogedSidebar = () => {
                         </Link>
                     })}
                 </div>
+                <button className={!theme ? `${styles.theme_btn}` : `${styles.theme_btn} ${styles.theme_active}`} onClick={handleTheme}>
+                    <img className={styles.theme_icon} src="/sun.png" alt="sun" />
+                    <img className={styles.theme_icon} src="/moon.png" alt="moon" />
+                </button>
+
 
                 <div className={styles.account}>
                     <IconButton
@@ -171,7 +186,7 @@ const LogedSidebar = () => {
                         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
                     >
                         <MenuItem>
-                            <Avatar /> {currentUser !== undefined  ? currentUser[0].userName : ''}
+                            <Avatar /> {currentUser !== undefined ? currentUser[0].userName : ''}
                         </MenuItem>
                         <Divider />
                         <MenuItem onClick={handleCourses}>

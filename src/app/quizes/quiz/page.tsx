@@ -1,4 +1,5 @@
 "use client"
+import '../../../app/globals.css'
 import styles from './page.module.css'
 import { RadioGroup, FormControlLabel, Radio, Button } from '@mui/material'
 import CircularWithValueLabel from '@/components/progressBar/progress'

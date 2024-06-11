@@ -24,14 +24,13 @@
     width: 200px;
     padding: 20px;
     height: fit-content;
-    background: transparent;
+    background: var(--booksCardBg);
     display: flex;
     flex-direction: column;
     gap: 20px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    color: grey;
     border-radius: 10px;
     transition: all 0.3s ease;
     border: 1px solid gainsboro;
@@ -51,7 +50,7 @@
 }
 
 .quiz_name{
-    color: black;
+    color: var(--textColor);
     font-weight: bold;
 }
 
