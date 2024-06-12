@@ -55,7 +55,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={theme ? 'light' : 'dark'}>
+      <body className={!theme ? 'light' : 'dark'}>
         <div className='app-container'>
           <Sidebar />
           <div className="pages-content">
