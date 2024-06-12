@@ -26,6 +26,7 @@ export default function RootLayout({
   const getBooksCounter = useBooks((state) => state.getBooksCounter)
   const theme = useTheme((state)=> state.theme)
   const setTheme = useTheme((state)=> state.setTheme)
+  const themeFromStorage = getFromStorage('theme')
 
 
 
@@ -44,8 +45,8 @@ export default function RootLayout({
     if (getFromStorage('favBooksCounter')) {
       getBooksCounter(getFromStorage('favBooksCounter'))
     }
-    if(getFromStorage('theme')){
-      if(getFromStorage('theme') === 'light'){
+    if(themeFromStorage){
+      if(themeFromStorage === 'light'){
         setTheme(false)
       }else{
         setTheme(true)
@@ -58,7 +59,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={!theme ? 'light' : 'dark'}>
+      <body className={themeFromStorage && themeFromStorage === 'light' ? 'light' : 'dark'}>
         <div className='app-container'>
           <Sidebar />
           <div className="pages-content">
