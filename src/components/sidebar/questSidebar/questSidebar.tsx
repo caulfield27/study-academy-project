@@ -42,12 +42,18 @@ const QuestSidebar = () => {
                             {icons[ind].logo} {link.name}
                         </Link>
                     })}
+                    <button 
+                    style={{marginTop:'10px'}}
+                    className={!theme ? `${styles.theme_btn}` : `${styles.theme_btn} ${styles.theme_active}`} onClick={handleTheme}>
+                        <img className={styles.theme_icon} src="/sun.png" alt="sun" />
+                        <img className={styles.theme_icon} src="/moon.png" alt="moon" />
+                    </button>
                     <div className={styles.x_wrap}>
                         <button className={styles.x} onClick={() => { setDropdown(false) }}>&#10006;</button>
                     </div>
                 </div>
 
-                <div className={styles.sidebar_header}>
+                <div className={styles.sidebar_header} style={{paddingRight: '40px'}}>
                     <div className={styles.logo_wrap}>
                         <img src='/humoLogo.png' />
                         <h3>Humo Academy</h3>
@@ -69,12 +75,13 @@ const QuestSidebar = () => {
                         </Link>
                     
                     })}
-                </div>
-
                     <button className={!theme ? `${styles.theme_btn}` : `${styles.theme_btn} ${styles.theme_active}`} onClick={handleTheme}>
                         <img className={styles.theme_icon} src="/sun.png" alt="sun" />
                         <img className={styles.theme_icon} src="/moon.png" alt="moon" />
                     </button>
+                </div>
+
+                    
                 
                 
             </div>

@@ -63,3 +63,11 @@
   }
   
 }
+
+@media screen and (max-width:490px) {
+  .header_text h1{
+    font-size: 35px;
+
+  }
+  
+}

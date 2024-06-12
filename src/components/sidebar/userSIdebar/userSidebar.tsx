@@ -1,4 +1,5 @@
 import styles from '../sidebar.module.css'
+import '../../../app/globals.css'
 import { logedLinks } from './userRoutes';
 import HomeIcon from '@mui/icons-material/Home';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
@@ -101,12 +102,19 @@ const LogedSidebar = () => {
                             {icons[ind].logo} {link.name}
                         </Link>
                     })}
+                    <button
+                    style={{marginTop: '10px'}} 
+                    className={!theme ? `${styles.theme_btn}` : `${styles.theme_btn} ${styles.theme_active}`} 
+                    onClick={handleTheme}>
+                        <img className={styles.theme_icon} src="/sun.png" alt="sun" />
+                        <img className={styles.theme_icon} src="/moon.png" alt="moon" />
+                    </button>
                     <div className={styles.x_wrap}>
                         <button className={styles.x} onClick={() => { setDropdown(false) }}>&#10006;</button>
                     </div>
                 </div>
 
-                <div className={styles.sidebar_header}>
+                <div className={styles.sidebar_header} style={{paddingRight: '100px'}}>
                     <div className={styles.logo_wrap}>
                         <img src='/humoLogo.png' />
                         <h3>Humo Academy</h3>
@@ -118,7 +126,7 @@ const LogedSidebar = () => {
 
 
                 </div>
-                <hr />
+                <hr className={styles.hr} />
                 <div className={styles.navigation_wrap}>
                     {logedLinks.map((link, key) => {
                         const isActive = pathname === link.path
@@ -127,11 +135,14 @@ const LogedSidebar = () => {
                             {icons[key].logo}{link.name}
                         </Link>
                     })}
-                </div>
-                <button className={!theme ? `${styles.theme_btn}` : `${styles.theme_btn} ${styles.theme_active}`} onClick={handleTheme}>
+                    <button
+                    className={!theme ? `${styles.theme_btn}` : `${styles.theme_btn} ${styles.theme_active}`} 
+                    onClick={handleTheme}>
                     <img className={styles.theme_icon} src="/sun.png" alt="sun" />
                     <img className={styles.theme_icon} src="/moon.png" alt="moon" />
                 </button>
+                </div>
+                
 
 
                 <div className={styles.account}>
