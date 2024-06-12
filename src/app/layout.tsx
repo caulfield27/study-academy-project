@@ -26,9 +26,6 @@ export default function RootLayout({
   const getBooksCounter = useBooks((state) => state.getBooksCounter)
   const theme = useTheme((state)=> state.theme)
   const setTheme = useTheme((state)=> state.setTheme)
-  const themeFromStorage = getFromStorage('theme')
-
-
 
   useEffect(() => {
     if (isAuth) {
@@ -51,23 +48,14 @@ export default function RootLayout({
       }else{
         setTheme(true)
       }
-      
-  
     }
 
-   
-    
-  },[])
+  },[theme])
 
 
-  if(!themeFromStorage){
-    return (
-      <div>loading...</div>
-    )
-  }
   return (
     <html lang="en">
-      <body className={themeFromStorage === 'light' ? 'light' : 'dark'}>
+      <body className={theme ? 'light' : 'dark'}>
         <div className='app-container'>
           <Sidebar />
           <div className="pages-content">
