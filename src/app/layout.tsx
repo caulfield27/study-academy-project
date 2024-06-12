@@ -45,21 +45,29 @@ export default function RootLayout({
     if (getFromStorage('favBooksCounter')) {
       getBooksCounter(getFromStorage('favBooksCounter'))
     }
-    if(themeFromStorage){
-      if(themeFromStorage === 'light'){
+    if(getFromStorage('theme')){
+      if(getFromStorage('theme') === 'light'){
         setTheme(false)
       }else{
         setTheme(true)
       }
+      
   
     }
+
    
     
-  }, [])
+  },[])
 
+
+  if(!themeFromStorage){
+    return (
+      <div>loading...</div>
+    )
+  }
   return (
     <html lang="en">
-      <body className={themeFromStorage && themeFromStorage === 'light' ? 'light' : 'dark'}>
+      <body className={themeFromStorage === 'light' ? 'light' : 'dark'}>
         <div className='app-container'>
           <Sidebar />
           <div className="pages-content">
