@@ -1,7 +1,9 @@
-import data from '../../../../json_server/json_data/db.json'
+import data from '../../../../db.json'
 import { NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
+
+const dbPath = path.join(process.cwd(), 'db.json')
 
 export async function GET(request: Request) {
   const books = data.books
@@ -39,20 +41,16 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const books = data.books;
-
+  const data = fs.readFileSync(dbPath, 'utf-8');
   try {
     const newBook = await request.json();
-
+    
     if (!newBook.name || !newBook.author) {
       return NextResponse.json({ error: 'Invalid book data' }, { status: 400 });
     }
-
-    books.push(newBook);
-
-    const filePath = path.resolve(__dirname, '../../../../json_server/json_data/db.json');
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-
+    const parsedData = JSON.parse(data)
+    parsedData.books.push(newBook) 
+    fs.writeFileSync(dbPath, JSON.stringify(parsedData,null,2))
     return NextResponse.json({ message: 'Book added successfully', book: newBook }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to add book' }, { status: 500 });

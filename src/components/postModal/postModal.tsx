@@ -8,7 +8,9 @@ import Swal from 'sweetalert2'
 import { isLInk } from '@/utils/checkValidation'
 import { useBooks } from '@/store/books/books'
 import { useRouter } from 'next/navigation'
+import { useSWRConfig } from 'swr'
 import { postData } from '@/utils/api'
+import { mutate } from 'swr'
 
 const PostModal = () => {
     const router = useRouter()
@@ -47,7 +49,7 @@ const PostModal = () => {
             confirmButtonText: 'ok'
         }).then((result) => {
             if (result.isConfirmed) {
-                // postData(`${process.env.BASED_URL}`, postedData)
+                mutate(`http://localhost:3000/api/books`, postData(`http://localhost:3000/api/books`,postedData))
             }
         })
         document.body.classList.remove('open_modal')

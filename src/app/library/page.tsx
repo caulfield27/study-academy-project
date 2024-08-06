@@ -6,7 +6,7 @@ import PostModal from "@/components/postModal/postModal";
 import { Book } from "@/components/book/book";
 import { Wrapper } from '@/components/wrapper/wrapper';
 import { fetchData } from '@/utils/api';
-import { CircularProgress, circularProgressClasses } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import BooksSearch from '@/components/libraryHeader/libraryHeader';
 import BooksPagination from '@/components/pagination/Pagination';
 

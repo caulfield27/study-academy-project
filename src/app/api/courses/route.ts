@@ -1,4 +1,4 @@
-import data from '../../../../json_server/json_data/db.json'
+import data from '../../../../db.json'
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {

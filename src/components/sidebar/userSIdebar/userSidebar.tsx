@@ -114,7 +114,7 @@ const LogedSidebar = () => {
                     </div>
                 </div>
 
-                <div className={styles.sidebar_header} style={{paddingRight: '100px'}}>
+                <div className={styles.sidebar_header} style={{paddingRight: '40px'}}>
                     <div className={styles.logo_wrap}>
                         <img src='/humoLogo.png' />
                         <h3>Humo Academy</h3>

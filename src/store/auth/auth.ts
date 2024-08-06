@@ -91,22 +91,22 @@ export const handleSignup = (email: string, fullName: string, password: string,
             userPassword: password,
             userToken: `token!*${email}${password}`,
         }
-        // try {
-        //     fetch('http://localhost:3001/users', {
-        //         method: 'POST',
-        //         body: JSON.stringify(signedUser)
-        //     })
-        // } catch (e) {
-        //     console.log(e)
-        // } finally {
-        //     navigate.push('/auth/login')
-        //     Swal.fire({
-        //         title: 'Signed up successfull',
-        //         text: 'login with your email',
-        //         icon: 'success',
-        //     confirmButtonText: 'ok'
-        // })
-        // }
+        try {
+            fetch('http://localhost:3000/api/users', {
+                method: 'POST',
+                body: JSON.stringify(signedUser)
+            })
+        } catch (e) {
+            console.log(e)
+        } finally {
+            navigate.push('/auth/login')
+            Swal.fire({
+                title: 'Signed up successfull',
+                text: 'login with your email',
+                icon: 'success',
+            confirmButtonText: 'ok'
+        })
+        }
     }
 
 

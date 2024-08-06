@@ -21,7 +21,7 @@ const Home = ()=>{
                         <button onClick={() => navigate.push('/courses')}>Start to learn free</button>
                     </div>
                     <div className={styles.header_img}>
-                        <img src="https://cdn2.hexlet.io/assets/main_landing_hero-a0ae296e0b9f2395c6c442b2104000ddc260fabd559bef2b779e5fa039619192.svg" alt="" />
+                        <img src="/mainImg.svg" alt="programming computer photo" />
                     </div>
                 </div>
             </Wrapper>

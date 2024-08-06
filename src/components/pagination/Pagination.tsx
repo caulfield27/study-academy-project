@@ -1,5 +1,6 @@
 "use client"
-
+import '../../app/globals.css'
+import styles from './pagination.module.css'
 import { Stack, Pagination } from "@mui/material"
 import { useRouter, useSearchParams, usePathname } from "next/navigation"
 
@@ -15,12 +16,13 @@ const BooksPagination = ({ pages, currentPage }: { pages: number, currentPage: s
         params.set('_page', value.toString())
         navigate.replace(`${pathname}?${params.toString()}`)
     };
-    
+
     return (
-        <Stack spacing={2}>
-            <Pagination defaultValue={currentPage ? Number(currentPage) : 1}
-                count={Math.ceil(totalPages)} page={currentPage ? Number(currentPage) : 1} onChange={handleChangePage} />
-        </Stack>
+            <Stack spacing={2}>
+                <Pagination defaultValue={currentPage ? Number(currentPage) : 1} className={styles.pagination}
+                    count={Math.ceil(totalPages)} page={currentPage ? Number(currentPage) : 1} onChange={handleChangePage} />
+            </Stack>
+    
     )
 }
 
