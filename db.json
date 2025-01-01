@@ -406,26 +406,6 @@
       "description": "Many of the designations used by manufacturers and sellers to distinguish their products are claimed as trademarks. Where those designations appear in the book, and Manning Publications was aware of a trademark claim, the designations have been printed in initial caps or all caps. Recognizing the importance of preserving what has been written, it is Manning’s policy to have the books we publish printed on acid-free paper, and we exert our best efforts to that end. Recognizing also our responsibility to conserve the resources of our planet, Manning books are printed on paper that is at least 15 percent recycled and processed without the use of elemental chlorine."
     },
     {
-      "name": "test",
-      "author": "test",
-      "image": "http://localhost:3001/books",
-      "pdf": "http://localhost:3001/books",
-      "rating": "2",
-      "released": "test",
-      "description": "test",
-      "id": 1722862385093
-    },
-    {
-      "name": "test1",
-      "author": "test1",
-      "image": "http://localhost:3001/books",
-      "pdf": "http://localhost:3001/books",
-      "rating": "3",
-      "released": "test1",
-      "description": "test1",
-      "id": 1722862385093
-    },
-    {
       "name": "mastering node js",
       "author": "Sandro Pasquali",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTCNZLbB7uTCgp8AhjygIl5yKWB--6zQuxQ&s",

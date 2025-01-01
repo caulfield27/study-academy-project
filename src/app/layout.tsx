@@ -1,5 +1,4 @@
 "use client"
-
 import "./globals.css";
 import Sidebar from "@/components/sidebar/sidebar";
 import useAuth from "@/store/auth/auth";
@@ -10,6 +9,7 @@ import { setUserFavBooks } from "@/store/books/books";
 import { getFromStorage } from "@/utils/useLocaleStorage";
 import { setUserFavCourse } from "@/store/courses/courses";
 import { useTheme } from "@/store/global/theme";
+
 export default function RootLayout({
   children,
 }: Readonly<{

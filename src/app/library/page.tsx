@@ -26,7 +26,7 @@ const Library = async (
 
                 </div>
                 <div className={styles.header_container}>
-                    <BooksSearch search={searchParams?._search ?? ''} />
+                    <BooksSearch />
                     <PostModal />
                 </div>
                 
